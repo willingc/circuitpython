@@ -8,11 +8,11 @@
 #include "py/repl.h"
 #include "py/gc.h"
 
-#include "lib/fatfs/ff.h"
-#include "lib/fatfs/diskio.h"
+#include "extmod/vfs_fat.h"
+#include "lib/oofatfs/ff.h"
+#include "lib/oofatfs/diskio.h"
 #include "lib/mp-readline/readline.h"
 #include "lib/utils/pyexec.h"
-#include "extmod/fsusermount.h"
 
 #include "asf/common/services/sleepmgr/sleepmgr.h"
 #include "asf/common/services/usb/udc/udc.h"
@@ -41,6 +41,7 @@
 #include "tick.h"
 
 fs_user_mount_t fs_user_mount_flash;
+mp_vfs_mount_t mp_vfs_mount_flash;
 
 void do_str(const char *src, mp_parse_input_kind_t input_kind) {
     mp_lexer_t *lex = mp_lexer_new_from_str_len(MP_QSTR__lt_stdin_gt_, src, strlen(src), 0);
@@ -68,46 +69,48 @@ extern void flash_init_vfs(fs_user_mount_t *vfs);
 // want it to be executed without using stack within main() function
 void init_flash_fs(void) {
     // init the vfs object
-    fs_user_mount_t *vfs = &fs_user_mount_flash;
-    vfs->str = "/flash";
-    vfs->len = 6;
-    vfs->flags = 0;
-    flash_init_vfs(vfs);
-
-    // put the flash device in slot 0 (it will be unused at this point)
-    MP_STATE_PORT(fs_user_mount)[0] = vfs;
+    fs_user_mount_t *vfs_fat = &fs_user_mount_flash;
+    vfs_fat->str = NULL;
+    vfs_fat->len = 0;
+    vfs_fat->flags = 0;
+    flash_init_vfs(vfs_fat);
 
     // try to mount the flash
-    FRESULT res = f_mount(&vfs->fatfs, vfs->str, 1);
+    FRESULT res = f_mount(&vfs_fat->fatfs);
 
     if (res == FR_NO_FILESYSTEM) {
         // no filesystem, or asked to reset it, so create a fresh one
 
         // We are before USB initializes so temporarily undo the USB_WRITEABLE
         // requirement.
-        bool usb_writeable = (vfs->flags & FSUSER_USB_WRITEABLE) > 0;
-        vfs->flags &= ~FSUSER_USB_WRITEABLE;
+        bool usb_writeable = (vfs_fat->flags & FSUSER_USB_WRITEABLE) > 0;
+        vfs_fat->flags &= ~FSUSER_USB_WRITEABLE;
 
-        res = f_mkfs("/flash", 0, 0);
+        uint8_t working_buf[_MAX_SS];
+        res = f_mkfs(&vfs_fat->fatfs, FM_FAT, 0, working_buf, sizeof(working_buf));
         if (res != FR_OK) {
-            MP_STATE_PORT(fs_user_mount)[0] = NULL;
             return;
         }
 
         // set label
-        f_setlabel("CIRCUITPY");
+        f_setlabel(&vfs_fat->fatfs, "CIRCUITPY");
 
         if (usb_writeable) {
-            vfs->flags |= FSUSER_USB_WRITEABLE;
+            vfs_fat->flags |= FSUSER_USB_WRITEABLE;
         }
     } else if (res != FR_OK) {
-        MP_STATE_PORT(fs_user_mount)[0] = NULL;
         return;
     }
+    mp_vfs_mount_t *vfs = &mp_vfs_mount_flash;
+    vfs->str = "/flash";
+    vfs->len = 6;
+    vfs->obj = MP_OBJ_FROM_PTR(vfs_fat);
+    vfs->next = NULL;
+    MP_STATE_VM(vfs_mount_table) = vfs;
 
     // The current directory is used as the boot up directory.
     // It is set to the internal flash filesystem by default.
-    f_chdrive("/flash");
+    MP_STATE_PORT(vfs_cur) = vfs;
 }
 
 static char *stack_top;
@@ -120,9 +123,12 @@ void reset_mp(void) {
 
     // Sync the file systems in case any used RAM from the GC to cache. As soon
     // as we re-init the GC all bets are off on the cache.
-    disk_ioctl(0, CTRL_SYNC, NULL);
-    disk_ioctl(1, CTRL_SYNC, NULL);
-    disk_ioctl(2, CTRL_SYNC, NULL);
+
+    #ifdef EXPRESS_BOARD
+    spi_flash_flush();
+    #else
+    internal_flash_flush();
+    #endif
 
     #if MICROPY_ENABLE_GC
     gc_init(heap, heap + sizeof(heap));
@@ -235,13 +241,8 @@ void reset_samd21(void) {
 }
 
 bool maybe_run(const char* filename, pyexec_result_t* exec_result) {
-    FILINFO fno;
-#if _USE_LFN
-    fno.lfname = NULL;
-    fno.lfsize = 0;
-#endif
-    FRESULT res = f_stat(filename, &fno);
-    if (res != FR_OK || fno.fattrib & AM_DIR) {
+    mp_import_stat_t stat = mp_import_stat(filename);
+    if (stat != MP_IMPORT_STAT_FILE) {
         return false;
     }
     mp_hal_stdout_tx_str(filename);
@@ -566,16 +567,6 @@ void gc_collect(void) {
     // range.
     gc_collect_root(&dummy, ((mp_uint_t)stack_top - (mp_uint_t)&dummy) / sizeof(mp_uint_t));
     gc_collect_end();
-}
-
-mp_import_stat_t fat_vfs_import_stat(const char *path);
-mp_import_stat_t mp_import_stat(const char *path) {
-    #if MICROPY_VFS_FAT
-    return fat_vfs_import_stat(path);
-    #else
-    (void)path;
-    return MP_IMPORT_STAT_NO_EXIST;
-    #endif
 }
 
 void nlr_jump_fail(void *val) {

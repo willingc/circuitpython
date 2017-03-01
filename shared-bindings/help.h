@@ -31,4 +31,6 @@
 
 extern void shared_module_help(void);
 
+MP_DECLARE_CONST_FUN_OBJ_VAR_BETWEEN(builtin_help_obj);
+
 #endif  // __MICROPY_INCLUDED_SHARED_BINDINGS_HELP_H__

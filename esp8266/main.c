@@ -34,7 +34,7 @@
 #include "py/stackctrl.h"
 #include "py/mphal.h"
 #include "py/gc.h"
-#include "lib/fatfs/ff.h"
+#include "lib/oofatfs/ff.h"
 #include "lib/mp-readline/readline.h"
 #include "lib/utils/pyexec.h"
 #include "gccollect.h"
@@ -45,13 +45,8 @@
 STATIC char heap[36 * 1024];
 
 bool maybe_run(const char* filename, pyexec_result_t* exec_result) {
-    FILINFO fno;
-#if _USE_LFN
-    fno.lfname = NULL;
-    fno.lfsize = 0;
-#endif
-    FRESULT res = f_stat(filename, &fno);
-    if (res != FR_OK || fno.fattrib & AM_DIR) {
+    mp_import_stat_t stat = mp_import_stat(filename);
+    if (stat != MP_IMPORT_STAT_FILE) {
         return false;
     }
     mp_hal_stdout_tx_str(filename);
@@ -100,8 +95,8 @@ STATIC void mp_reset(void) {
     mp_init();
     mp_obj_list_init(mp_sys_path, 0);
     mp_obj_list_append(mp_sys_path, MP_OBJ_NEW_QSTR(MP_QSTR_)); // current dir (or base dir of the script)
-    mp_obj_list_append(mp_sys_path, MP_OBJ_NEW_QSTR(MP_QSTR__slash_lib));
-    mp_obj_list_append(mp_sys_path, MP_OBJ_NEW_QSTR(MP_QSTR__slash_));
+    mp_obj_list_append(mp_sys_path, MP_OBJ_NEW_QSTR(MP_QSTR__slash_flash_slash_lib));
+    mp_obj_list_append(mp_sys_path, MP_OBJ_NEW_QSTR(MP_QSTR__slash_flash));
     mp_obj_list_init(mp_sys_argv, 0);
     MP_STATE_PORT(term_obj) = MP_OBJ_NULL;
     MP_STATE_PORT(dupterm_arr_obj) = MP_OBJ_NULL;
@@ -151,33 +146,22 @@ void user_init(void) {
     system_init_done_cb(init_done);
 }
 
-mp_import_stat_t fat_vfs_import_stat(const char *path);
-
-#if !MICROPY_VFS_FAT
+#if !MICROPY_VFS
 mp_lexer_t *mp_lexer_new_from_file(const char *filename) {
     return NULL;
 }
-#endif
 
 mp_import_stat_t mp_import_stat(const char *path) {
-    #if MICROPY_VFS_FAT
-    return fat_vfs_import_stat(path);
-    #else
     (void)path;
     return MP_IMPORT_STAT_NO_EXIST;
-    #endif
 }
 
-mp_obj_t vfs_proxy_call(qstr method_name, mp_uint_t n_args, const mp_obj_t *args);
 mp_obj_t mp_builtin_open(uint n_args, const mp_obj_t *args, mp_map_t *kwargs) {
-    #if MICROPY_VFS_FAT
-    // TODO: Handle kwargs!
-    return vfs_proxy_call(MP_QSTR_open, n_args, args);
-    #else
     return mp_const_none;
-    #endif
 }
 MP_DEFINE_CONST_FUN_OBJ_KW(mp_builtin_open_obj, 1, mp_builtin_open);
+
+#endif
 
 void MP_FASTCODE(nlr_jump_fail)(void *val) {
     printf("NLR jump failed\n");

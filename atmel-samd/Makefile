@@ -119,7 +119,7 @@ CFLAGS_CORTEX_M0 = \
 	-DTC_ASYNC=true \
 	-DUSB_DEVICE_LPM_SUPPORT \
 	--param max-inline-insns-single=500
-CFLAGS = $(INC) -Wall -Werror -std=gnu11 -nostdlib $(CFLAGS_CORTEX_M0) $(COPT) $(BOARD_CFLAGS)
+CFLAGS = $(INC) -Wall -Werror -std=gnu11 -nostdlib $(CFLAGS_CORTEX_M0) $(COPT) $(BOARD_CFLAGS) $(CFLAGS_MOD)
 
 #Debugging/Optimization
 # TODO(tannewt): Figure out what NDEBUG does. Adding it to the debug build
@@ -173,7 +173,6 @@ SRC_ASF = $(addprefix asf/sam0/,\
 SRC_C = \
 	access_vfs.c \
 	autoreset.c \
-	builtin_open.c \
 	fatfs_port.c \
 	main.c \
 	moduos.c \
@@ -199,13 +198,12 @@ SRC_C = \
 	asf/sam0/utils/syscalls/gcc/syscalls.c \
 	boards/$(BOARD)/init.c \
 	boards/$(BOARD)/pins.c \
-	lib/fatfs/ff.c \
-	lib/fatfs/option/ccsbcs.c \
+	lib/oofatfs/ff.c \
+	lib/oofatfs/option/ccsbcs.c \
 	lib/timeutils/timeutils.c \
 	lib/utils/context_manager_helpers.c \
 	lib/utils/interrupt_char.c \
 	lib/utils/pyexec.c \
-	lib/utils/pyhelp.c \
 	lib/utils/stdout_helpers.c \
 	lib/libc/string0.c \
 	lib/mp-readline/readline.c

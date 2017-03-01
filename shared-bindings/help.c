@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 
-#include "lib/utils/pyhelp.h"
+#include "py/builtinhelp.h"
 #include "shared-bindings/help.h"
 
 //| :func:`help` - Built-in method to provide helpful information
@@ -35,14 +35,14 @@
 //|   Prints a help method about the given object. When ``object`` is none,
 //|   prints general port information.
 //|
-STATIC mp_obj_t pyb_help(uint n_args, const mp_obj_t *args) {
+STATIC mp_obj_t builtin_help(uint n_args, const mp_obj_t *args) {
     if (n_args == 0) {
         shared_module_help();
     } else {
         // try to print something sensible about the given object
-        pyhelp_print_obj(args[0]);
+        mp_help_print_obj(args[0]);
     }
 
     return mp_const_none;
 }
-MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mp_builtin_help_obj, 0, 1, pyb_help);
+MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(builtin_help_obj, 0, 1, builtin_help);

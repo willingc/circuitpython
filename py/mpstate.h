@@ -36,6 +36,8 @@
 #include "py/objlist.h"
 #include "py/objexcept.h"
 
+#include "shared-bindings/help.h"
+
 // This file contains structures defining the state of the Micro Python
 // memory system, runtime and virtual machine.  The state is a global
 // variable, but in the future it is hoped that the state can become local.
@@ -160,9 +162,9 @@ typedef struct _mp_state_vm_t {
     mp_obj_t lwip_slip_stream;
     #endif
 
-    #if MICROPY_FSUSERMOUNT
-    // for user-mountable block device (max fixed at compile time)
-    struct _fs_user_mount_t *fs_user_mount[MICROPY_FATFS_VOLUMES];
+    #if MICROPY_VFS
+    struct _mp_vfs_mount_t *vfs_cur;
+    struct _mp_vfs_mount_t *vfs_mount_table;
     #endif
 
     //

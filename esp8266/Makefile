@@ -16,7 +16,7 @@ QSTR_DEFS = qstrdefsport.h #$(BUILD)/pins_qstr.h
 MICROPY_PY_USSL = 1
 MICROPY_SSL_AXTLS = 1
 MICROPY_FATFS = 1
-MICROPY_PY_BTREE = 1
+MICROPY_PY_BTREE = 0
 
 FROZEN_DIR = scripts
 FROZEN_MPY_DIR = modules
@@ -167,14 +167,13 @@ LIB_SRC_C = $(addprefix lib/,\
 	timeutils/timeutils.c \
 	utils/context_manager_helpers.c \
 	utils/pyexec.c \
-	utils/pyhelp.c \
 	utils/interrupt_char.c \
 	)
 
 ifeq ($(MICROPY_FATFS), 1)
 LIB_SRC_C += \
-	lib/fatfs/ff.c \
-	lib/fatfs/option/ccsbcs.c
+	lib/oofatfs/ff.c \
+	lib/oofatfs/option/unicode.c
 endif
 
 DRIVERS_SRC_C = $(addprefix drivers/,\

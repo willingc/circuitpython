@@ -398,9 +398,9 @@
 #define MICROPY_READER_POSIX (0)
 #endif
 
-// Whether to use the FatFS reader for importing files
-#ifndef MICROPY_READER_FATFS
-#define MICROPY_READER_FATFS (0)
+// Whether to use the VFS reader for importing files
+#ifndef MICROPY_READER_VFS
+#define MICROPY_READER_VFS (0)
 #endif
 
 // Number of VFS mounts to persist across soft-reset.
@@ -621,9 +621,9 @@ typedef double mp_float_t;
 #define MICROPY_USE_INTERNAL_PRINTF (1)
 #endif
 
-// Support for user-space VFS mount (selected ports)
-#ifndef MICROPY_FSUSERMOUNT
-#define MICROPY_FSUSERMOUNT (0)
+// Support for generic VFS sub-system
+#ifndef MICROPY_VFS
+#define MICROPY_VFS (0)
 #endif
 
 /*****************************************************************************/
@@ -638,6 +638,12 @@ typedef double mp_float_t;
 // This costs some code size and makes all load attrs and store attrs slow
 #ifndef MICROPY_PY_DESCRIPTORS
 #define MICROPY_PY_DESCRIPTORS (0)
+#endif
+
+// Whether to support class __delattr__ and __setattr__ methods
+// This costs some code size and makes all del attrs and store attrs slow
+#ifndef MICROPY_PY_DELATTR_SETATTR
+#define MICROPY_PY_DELATTR_SETATTR (0)
 #endif
 
 // Support for async/await/async for/async with
@@ -762,6 +768,27 @@ typedef double mp_float_t;
 // Whether to support min/max functions
 #ifndef MICROPY_PY_BUILTINS_MIN_MAX
 #define MICROPY_PY_BUILTINS_MIN_MAX (1)
+#endif
+
+// Support for calls to pow() with 3 integer arguments
+#ifndef MICROPY_PY_BUILTINS_POW3
+#define MICROPY_PY_BUILTINS_POW3 (0)
+#endif
+
+// Whether to provide the help function
+#ifndef MICROPY_PY_BUILTINS_HELP
+#define MICROPY_PY_BUILTINS_HELP (0)
+#endif
+
+// Use this to configure the help text shown for help().  It should be a
+// variable with the type "const char*".  A sensible default is provided.
+#ifndef MICROPY_PY_BUILTINS_HELP_TEXT
+#define MICROPY_PY_BUILTINS_HELP_TEXT mp_help_default_text
+#endif
+
+// Add the ability to list the available modules when executing help('modules')
+#ifndef MICROPY_PY_BUILTINS_HELP_MODULES
+#define MICROPY_PY_BUILTINS_HELP_MODULES (0)
 #endif
 
 // Whether to set __file__ for imported modules
@@ -925,6 +952,12 @@ typedef double mp_float_t;
 // If not enabled then thread safety must be provided at the Python level
 #ifndef MICROPY_PY_THREAD_GIL
 #define MICROPY_PY_THREAD_GIL (MICROPY_PY_THREAD)
+#endif
+
+// Number of VM jump-loops to do before releasing the GIL.
+// Set this to 0 to disable the divisor.
+#ifndef MICROPY_PY_THREAD_GIL_VM_DIVISOR
+#define MICROPY_PY_THREAD_GIL_VM_DIVISOR (32)
 #endif
 
 // Extended modules

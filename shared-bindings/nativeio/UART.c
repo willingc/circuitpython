@@ -283,7 +283,7 @@ const mp_obj_type_t nativeio_uart_type = {
     { &mp_type_type },
     .name = MP_QSTR_UART,
     .make_new = nativeio_uart_make_new,
-    .getiter = mp_identity,
+    .getiter = mp_identity_getiter,
     .iternext = mp_stream_unbuffered_iter,
     .protocol = &uart_stream_p,
     .locals_dict = (mp_obj_dict_t*)&nativeio_uart_locals_dict,
