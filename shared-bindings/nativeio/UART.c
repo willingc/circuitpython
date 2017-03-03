@@ -28,8 +28,6 @@
 
 #include "shared-bindings/nativeio/UART.h"
 
-#include "lib/utils/context_manager_helpers.h"
-
 #include "py/ioctl.h"
 #include "py/runtime.h"
 #include "py/stream.h"
@@ -128,7 +126,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(nativeio_uart_deinit_obj, nativeio_uart_obj_dei
 //|
 //|      No-op used by Context Managers.
 //|
-//  Provided by context manager helper.
+//  Provided by the mp_identity function.
 
 //|   .. method:: __exit__()
 //|
@@ -258,7 +256,7 @@ const mp_obj_type_t nativeio_uart_parity_type = {
 
 STATIC const mp_rom_map_elem_t nativeio_uart_locals_dict_table[] = {
     { MP_ROM_QSTR(MP_QSTR_deinit),       MP_ROM_PTR(&nativeio_uart_deinit_obj) },
-    { MP_ROM_QSTR(MP_QSTR___enter__),    MP_ROM_PTR(&default___enter___obj) },
+    { MP_ROM_QSTR(MP_QSTR___enter__),    MP_ROM_PTR(&mp_identity_obj) },
     { MP_ROM_QSTR(MP_QSTR___exit__),     MP_ROM_PTR(&nativeio_uart___exit___obj) },
 
     // Standard stream methods.

@@ -30,7 +30,7 @@
 #include "shared-bindings/bitbangio/I2C.h"
 #include "shared-bindings/microcontroller/Pin.h"
 
-#include "lib/utils/context_manager_helpers.h"
+
 #include "py/mperrno.h"
 #include "py/runtime.h"
 //| .. currentmodule:: bitbangio
@@ -85,7 +85,7 @@ MP_DEFINE_CONST_FUN_OBJ_1(bitbangio_i2c_deinit_obj, bitbangio_i2c_obj_deinit);
 //|
 //|     No-op used in Context Managers.
 //|
-//  Provided by context manager helper.
+//  Provided by MicroPython core.
 
 //|   .. method:: I2C.__exit__()
 //|
@@ -252,7 +252,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_KW(bitbangio_i2c_writeto_obj, 1, bitbangio_i2c_wr
 
 STATIC const mp_rom_map_elem_t bitbangio_i2c_locals_dict_table[] = {
     { MP_ROM_QSTR(MP_QSTR_deinit), MP_ROM_PTR(&bitbangio_i2c_deinit_obj) },
-    { MP_ROM_QSTR(MP_QSTR___enter__), MP_ROM_PTR(&default___enter___obj) },
+    { MP_ROM_QSTR(MP_QSTR___enter__), MP_ROM_PTR(&mp_identity_obj) },
     { MP_ROM_QSTR(MP_QSTR___exit__), MP_ROM_PTR(&bitbangio_i2c_obj___exit___obj) },
     { MP_ROM_QSTR(MP_QSTR_scan), MP_ROM_PTR(&bitbangio_i2c_scan_obj) },
 

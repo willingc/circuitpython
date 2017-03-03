@@ -32,7 +32,7 @@
 #include "shared-bindings/bitbangio/SPI.h"
 #include "shared-bindings/microcontroller/Pin.h"
 
-#include "lib/utils/context_manager_helpers.h"
+
 #include "py/mperrno.h"
 #include "py/runtime.h"
 
@@ -98,7 +98,7 @@ MP_DEFINE_CONST_FUN_OBJ_1(bitbangio_spi_deinit_obj, bitbangio_spi_obj_deinit);
 //|
 //|      No-op used by Context Managers.
 //|
-//  Provided by context manager helper.
+//  Provided by the mp_identity function.
 
 //|   .. method:: SPI.__exit__()
 //|
@@ -208,7 +208,7 @@ MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(bitbangio_spi_readinto_obj, 2, 2, bitbangio_
 
 STATIC const mp_rom_map_elem_t bitbangio_spi_locals_dict_table[] = {
     { MP_ROM_QSTR(MP_QSTR_deinit), MP_ROM_PTR(&bitbangio_spi_deinit_obj) },
-    { MP_ROM_QSTR(MP_QSTR___enter__), MP_ROM_PTR(&default___enter___obj) },
+    { MP_ROM_QSTR(MP_QSTR___enter__), MP_ROM_PTR(&mp_identity_obj) },
     { MP_ROM_QSTR(MP_QSTR___exit__), MP_ROM_PTR(&bitbangio_spi_obj___exit___obj) },
 
     { MP_ROM_QSTR(MP_QSTR_configure), MP_ROM_PTR(&bitbangio_spi_configure_obj) },

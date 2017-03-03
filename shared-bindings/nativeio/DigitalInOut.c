@@ -27,8 +27,6 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "lib/utils/context_manager_helpers.h"
-
 #include "py/nlr.h"
 #include "py/objtype.h"
 #include "py/objproperty.h"
@@ -58,7 +56,7 @@
 //|
 STATIC mp_obj_t nativeio_digitalinout_make_new(const mp_obj_type_t *type,
         mp_uint_t n_args, mp_uint_t n_kw, const mp_obj_t *args) {
-    mp_arg_check_num(n_args, n_kw, 1, MP_OBJ_FUN_ARGS_MAX, true);
+    mp_arg_check_num(n_args, n_kw, 1, 1, true);
 
     nativeio_digitalinout_obj_t *self = m_new_obj(nativeio_digitalinout_obj_t);
     self->base.type = &nativeio_digitalinout_type;
@@ -86,7 +84,7 @@ MP_DEFINE_CONST_FUN_OBJ_1(nativeio_digitalinout_deinit_obj, nativeio_digitalinou
 //|
 //|      No-op used by Context Managers.
 //|
-//  Provided by context manager helper.
+//  Provided by the mp_identity function.
 
 //|   .. method:: __exit__()
 //|
@@ -308,6 +306,8 @@ STATIC mp_obj_t nativeio_digitalinout_obj_set_pull(mp_obj_t self_in, mp_obj_t pu
        pull = PULL_UP;
    } else if (pull_obj == &nativeio_digitalinout_pull_down_obj) {
        pull = PULL_DOWN;
+   } else if (pull_obj != mp_const_none) {
+       mp_raise_ValueError("pull must be nativeio.DigitalInOut.Pull or None.");
    }
    common_hal_nativeio_digitalinout_set_pull(self, pull);
    return mp_const_none;
@@ -459,7 +459,7 @@ const mp_obj_type_t nativeio_digitalinout_pull_type = {
 STATIC const mp_rom_map_elem_t nativeio_digitalinout_locals_dict_table[] = {
     // instance methods
     { MP_ROM_QSTR(MP_QSTR_deinit),                 MP_ROM_PTR(&nativeio_digitalinout_deinit_obj) },
-    { MP_ROM_QSTR(MP_QSTR___enter__),              MP_ROM_PTR(&default___enter___obj) },
+    { MP_ROM_QSTR(MP_QSTR___enter__),              MP_ROM_PTR(&mp_identity_obj) },
     { MP_ROM_QSTR(MP_QSTR___exit__),               MP_ROM_PTR(&nativeio_digitalinout_obj___exit___obj) },
     { MP_ROM_QSTR(MP_QSTR_switch_to_output),   MP_ROM_PTR(&nativeio_digitalinout_switch_to_output_obj) },
     { MP_ROM_QSTR(MP_QSTR_switch_to_input),    MP_ROM_PTR(&nativeio_digitalinout_switch_to_input_obj) },
