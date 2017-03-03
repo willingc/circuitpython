@@ -201,7 +201,6 @@ SRC_C = \
 	lib/oofatfs/ff.c \
 	lib/oofatfs/option/ccsbcs.c \
 	lib/timeutils/timeutils.c \
-	lib/utils/context_manager_helpers.c \
 	lib/utils/interrupt_char.c \
 	lib/utils/pyexec.c \
 	lib/utils/stdout_helpers.c \
