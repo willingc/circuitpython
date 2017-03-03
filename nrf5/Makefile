@@ -76,7 +76,7 @@ CFLAGS_MCU_m4 = $(CFLAGS_CORTEX_M) -mtune=cortex-m4 -mcpu=cortex-m4 -mfpu=fpv4-s
 CFLAGS_MCU_m0 = $(CFLAGS_CORTEX_M) --short-enums -mtune=cortex-m0 -mcpu=cortex-m0 -mfloat-abi=soft -fno-builtin
 
 
-CFLAGS += $(CFLAGS_MCU_$(MCU_SERIES)) 
+CFLAGS += $(CFLAGS_MCU_$(MCU_SERIES))
 CFLAGS += $(INC) -Wall -Werror -ansi -std=gnu99 -nostdlib $(COPT) $(NRF_DEFINES) $(CFLAGS_MOD)
 CFLAGS += -fno-strict-aliasing
 CFLAGS += -Iboards/$(BOARD)
@@ -96,10 +96,36 @@ CFLAGS += -Os -DNDEBUG
 LDFLAGS += -Os
 endif
 
-LIBS += \
+LIBS += -lgcc \
 
 SRC_LIB = $(addprefix lib/,\
 	libc/string0.c \
+	libm/math.c \
+	libm/thumb_vfp_sqrtf.c \
+	libm/asinfacosf.c \
+	libm/atanf.c \
+	libm/atan2f.c \
+	libm/fmodf.c \
+	libm/roundf.c \
+	libm/log1pf.c \
+	libm/acoshf.c \
+	libm/asinhf.c \
+	libm/atanhf.c \
+	libm/kf_rem_pio2.c \
+	libm/kf_sin.c \
+	libm/kf_cos.c \
+	libm/kf_tan.c \
+	libm/ef_rem_pio2.c \
+	libm/erf_lgamma.c \
+	libm/sf_sin.c \
+	libm/sf_cos.c \
+	libm/sf_tan.c \
+	libm/sf_frexp.c \
+	libm/sf_modf.c \
+	libm/sf_ldexp.c \
+	libm/sf_erf.c \
+	libm/wf_lgamma.c \
+	libm/wf_tgamma.c \
 	mp-readline/readline.c \
 	utils/pyexec.c \
 	timeutils/timeutils.c \
@@ -135,6 +161,8 @@ SRC_C += \
 	gccollect.c \
 	pin_named_pins.c \
 	fatfs_port.c \
+	nrf5_pins.c \
+	boards/$(BOARD)/pins.c \
 
 DRIVERS_SRC_C += $(addprefix modules/,\
 	display/moddisplay.c \
@@ -188,6 +216,44 @@ SRC_S = \
 
 #endif
 
+SRC_BINDINGS = \
+	board/__init__.c \
+	microcontroller/__init__.c \
+	microcontroller/Pin.c \
+	nativeio/__init__.c \
+	nativeio/AnalogIn.c \
+	nativeio/AnalogOut.c \
+	nativeio/DigitalInOut.c \
+	nativeio/I2C.c \
+	nativeio/PWMOut.c \
+	nativeio/SPI.c \
+	nativeio/UART.c \
+	neopixel_write/__init__.c \
+	time/__init__.c
+
+SRC_BINDINGS_EXPANDED = $(addprefix shared-bindings/, $(SRC_BINDINGS)) \
+                        $(addprefix common-hal/, $(SRC_BINDINGS))
+
+# Handle touch support on its own since it only fits in the image when external
+# flash is used to store the file system.
+SRC_BINDINGS_EXPANDED += shared-bindings/nativeio/TouchIn.c
+
+ifeq ($(FLASH_IMPL),internal_flash.c)
+SRC_BINDINGS_EXPANDED += common-hal/nativeio/TouchInStub.c
+else
+SRC_BINDINGS_EXPANDED += common-hal/nativeio/TouchIn.c
+endif
+
+SRC_SHARED_MODULE = \
+	help.c \
+	bitbangio/__init__.c \
+	bitbangio/I2C.c \
+	bitbangio/SPI.c \
+	uheap/__init__.c \
+
+SRC_SHARED_MODULE_EXPANDED = $(addprefix shared-bindings/, $(SRC_SHARED_MODULE)) \
+                             $(addprefix shared-module/, $(SRC_SHARED_MODULE))
+
 FROZEN_MPY_PY_FILES := $(shell find -L $(FROZEN_MPY_DIR) -type f -name '*.py')
 FROZEN_MPY_MPY_FILES := $(addprefix $(BUILD)/,$(FROZEN_MPY_PY_FILES:.py=.mpy))
 
@@ -195,6 +261,8 @@ OBJ += $(PY_O) $(addprefix $(BUILD)/, $(SRC_C:.c=.o) $(SRC_S:.s=.o))
 OBJ += $(addprefix $(BUILD)/, $(SRC_LIB:.c=.o))
 OBJ += $(addprefix $(BUILD)/, $(SRC_HAL:.c=.o))
 OBJ += $(addprefix $(BUILD)/, $(DRIVERS_SRC_C:.c=.o))
+OBJ += $(addprefix $(BUILD)/, $(SRC_BINDINGS_EXPANDED:.c=.o))
+OBJ += $(addprefix $(BUILD)/, $(SRC_SHARED_MODULE_EXPANDED:.c=.o))
 OBJ += $(BUILD)/pins_gen.o
 
 $(BUILD)/$(FATFS_DIR)/ff.o: COPT += -Os
@@ -250,7 +318,7 @@ $(BUILD)/$(OUTPUT_FILENAME).elf: $(OBJ)
 	$(Q)$(SIZE) $@
 
 # List of sources for qstr extraction
-SRC_QSTR += $(SRC_C) $(SRC_MOD) $(SRC_LIB) $(DRIVERS_SRC_C)
+SRC_QSTR += $(SRC_C) $(SRC_BINDINGS_EXPANDED) $(SRC_SHARED_MODULE_EXPANDED) $(SRC_MOD) $(SRC_LIB) $(DRIVERS_SRC_C)
 
 # Append any auto-generated sources that are needed by sources listed in
 # SRC_QSTR
@@ -296,4 +364,3 @@ CFLAGS += -DMICROPY_MODULE_FROZEN_MPY
 endif
 
 include ../py/mkrules.mk
-

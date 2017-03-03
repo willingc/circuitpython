@@ -43,9 +43,9 @@
 #define MICROPY_HELPER_REPL         (1)
 #define MICROPY_REPL_EMACS_KEYS     (0)
 #define MICROPY_REPL_AUTO_INDENT    (1)
-#define MICROPY_ENABLE_SOURCE_LINE  (0)
+#define MICROPY_ENABLE_SOURCE_LINE  (1)
 #define MICROPY_LONGINT_IMPL        (MICROPY_LONGINT_IMPL_MPZ)
-#define MICROPY_FLOAT_IMPL          (MICROPY_FLOAT_IMPL_NONE)
+#define MICROPY_FLOAT_IMPL          (MICROPY_FLOAT_IMPL_FLOAT)
 #define MICROPY_OPT_COMPUTED_GOTO   (0)
 #define MICROPY_OPT_CACHE_MAP_LOOKUP_IN_BYTECODE (0)
 #define MICROPY_OPT_MPZ_BITWISE     (0)
@@ -232,7 +232,6 @@ typedef long mp_off_t;
 // extra built in modules to add to the list of known ones
 extern const struct _mp_obj_module_t pyb_module;
 extern const struct _mp_obj_module_t machine_module;
-extern const struct _mp_obj_module_t mp_module_utime;
 extern const struct _mp_obj_module_t mp_module_uos;
 extern const struct _mp_obj_module_t mp_module_usocket;
 extern const struct _mp_obj_module_t mp_module_network;
@@ -240,6 +239,12 @@ extern const struct _mp_obj_module_t mp_module_lcd_mono_fb;
 extern const struct _mp_obj_module_t mp_module_display;
 extern const struct _mp_obj_module_t graphics_module;
 extern const struct _mp_obj_module_t mp_module_ubluepy;
+extern const struct _mp_obj_module_t microcontroller_module;
+extern const struct _mp_obj_module_t bitbangio_module;
+extern const struct _mp_obj_module_t nativeio_module;
+extern const struct _mp_obj_module_t board_module;
+extern const struct _mp_obj_module_t time_module;
+extern const struct _mp_obj_module_t neopixel_write_module;
 
 #if MICROPY_PY_USOCKET
 #define SOCKET_BUILTIN_MODULE               { MP_OBJ_NEW_QSTR(MP_QSTR_usocket), (mp_obj_t)&mp_module_usocket },
@@ -286,9 +291,13 @@ extern const struct _mp_obj_module_t ble_module;
     { MP_OBJ_NEW_QSTR(MP_QSTR_pyb), (mp_obj_t)&pyb_module }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_machine), (mp_obj_t)&machine_module }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_ble), (mp_obj_t)&ble_module }, \
-    { MP_OBJ_NEW_QSTR(MP_QSTR_utime), (mp_obj_t)&mp_module_utime }, \
-    { MP_OBJ_NEW_QSTR(MP_QSTR_time), (mp_obj_t)&mp_module_utime }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_time), (mp_obj_t)&time_module }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_uos), (mp_obj_t)&mp_module_uos }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_microcontroller), (mp_obj_t)&microcontroller_module }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_bitbangio), (mp_obj_t)&bitbangio_module }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_nativeio), (mp_obj_t)&nativeio_module }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_board), (mp_obj_t)&board_module }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_neopixel_write), (mp_obj_t)&mp_neopixel_write }, \
     SOCKET_BUILTIN_MODULE \
     NETWORK_BUILTIN_MODULE \
     LCD_MONO_FB_MODULE \
@@ -302,8 +311,13 @@ extern const struct _mp_obj_module_t ble_module;
 #define MICROPY_PORT_BUILTIN_MODULES \
     { MP_OBJ_NEW_QSTR(MP_QSTR_pyb), (mp_obj_t)&pyb_module }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_machine), (mp_obj_t)&machine_module }, \
-    { MP_OBJ_NEW_QSTR(MP_QSTR_utime), (mp_obj_t)&mp_module_utime }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_time), (mp_obj_t)&time_module }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_uos), (mp_obj_t)&mp_module_uos }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_microcontroller), (mp_obj_t)&microcontroller_module }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_bitbangio), (mp_obj_t)&bitbangio_module }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_nativeio), (mp_obj_t)&nativeio_module }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_board), (mp_obj_t)&board_module }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_neopixel_write), (mp_obj_t)&neopixel_write_module }, \
     LCD_MONO_FB_MODULE \
     DISPLAY_MODULE \
     GRAPHICS_MODULE \
@@ -311,13 +325,11 @@ extern const struct _mp_obj_module_t ble_module;
 #endif // BLUETOOTH_SD
 
 #define MICROPY_PORT_BUILTIN_MODULE_WEAK_LINKS \
-    { MP_OBJ_NEW_QSTR(MP_QSTR_os), (mp_obj_t)&mp_module_uos }, \
-    { MP_OBJ_NEW_QSTR(MP_QSTR_time), (mp_obj_t)&mp_module_utime }, \
     SOCKET_BUILTIN_MODULE_WEAK_LINKS \
 
 // extra built in names to add to the global namespace
 #define MICROPY_PORT_BUILTINS \
-    { MP_OBJ_NEW_QSTR(MP_QSTR_help), (mp_obj_t)&mp_builtin_help_obj }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_help), (mp_obj_t)&builtin_help_obj }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_open), (mp_obj_t)&mp_builtin_open_obj }, \
 
 // extra constants
