@@ -170,16 +170,11 @@ enum digitalinout_pull_t common_hal_nativeio_digitalinout_get_pull(
     uint32_t pin = self->pin->pin;
     PortGroup *const port_base = port_get_group_from_gpio_pin(pin);
     uint32_t pin_mask  = (1UL << (pin % 32));
-    if (self->output) {
-        mp_raise_AttributeError("Cannot get pull while in output mode");
+    if (port_base->PINCFG[pin % 32].bit.PULLEN == 0) {
         return PULL_NONE;
+    } if ((port_base->OUT.reg & pin_mask) > 0) {
+        return PULL_UP;
     } else {
-        if (port_base->PINCFG[pin % 32].bit.PULLEN == 0) {
-            return PULL_NONE;
-        } if ((port_base->OUT.reg & pin_mask) > 0) {
-            return PULL_UP;
-        } else {
-            return PULL_DOWN;
-        }
+        return PULL_DOWN;
     }
 }
