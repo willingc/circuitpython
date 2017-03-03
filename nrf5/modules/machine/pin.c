@@ -187,8 +187,8 @@ STATIC void pin_print(const mp_print_t *print, mp_obj_t self_in, mp_print_kind_t
 
     // pin name
     mp_printf(print, "Pin(Pin.cpu.%q, mode=Pin.", self->name);
-    mp_printf(print, "port=0x%x, ", self->port);
-    mp_printf(print, "pin=0x%x, ", self->pin);
+    mp_printf(print, "port=0x%x, ", self->pin.port);
+    mp_printf(print, "pin=0x%x, ", self->pin.pin);
     mp_printf(print, "pin_mask=0x%x,", self->pin_mask);
 /*
     uint32_t mode = pin_get_mode(self);
@@ -357,7 +357,7 @@ STATIC mp_obj_t pin_obj_init_helper(const pin_obj_t *self, mp_uint_t n_args, con
     // get io mode
     uint mode = args[0].u_int;
     if (mode == HAL_GPIO_MODE_OUTPUT || mode == HAL_GPIO_MODE_INPUT) {
-        hal_gpio_cfg_pin(self->port, self->pin, mode, pull);
+        hal_gpio_cfg_pin(self->pin, mode, pull);
     } else {
         nlr_raise(mp_obj_new_exception_msg_varg(&mp_type_ValueError, "invalid pin mode: %d", mode));
     }
@@ -431,7 +431,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(pin_names_obj, pin_names);
 /// Get the pin port.
 STATIC mp_obj_t pin_port(mp_obj_t self_in) {
     pin_obj_t *self = self_in;
-    return MP_OBJ_NEW_SMALL_INT(self->port);
+    return MP_OBJ_NEW_SMALL_INT(self->pin.port);
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(pin_port_obj, pin_port);
 
@@ -439,15 +439,16 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(pin_port_obj, pin_port);
 /// Get the pin number.
 STATIC mp_obj_t pin_pin(mp_obj_t self_in) {
     pin_obj_t *self = self_in;
-    return MP_OBJ_NEW_SMALL_INT(self->pin);
+    return MP_OBJ_NEW_SMALL_INT(self->pin.pin);
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(pin_pin_obj, pin_pin);
 
 /// \method gpio()
 /// Returns the base address of the GPIO block associated with this pin.
 STATIC mp_obj_t pin_gpio(mp_obj_t self_in) {
-    pin_obj_t *self = self_in;
-    return MP_OBJ_NEW_SMALL_INT((mp_int_t)self->gpio);
+    // TODO(tannewt): This used to be the gpio property but it doesn't look like
+    // it was ever set so it was removed.
+    return MP_OBJ_NEW_SMALL_INT(0);
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(pin_gpio_obj, pin_gpio);
 

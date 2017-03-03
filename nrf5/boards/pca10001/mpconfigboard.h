@@ -51,8 +51,8 @@
 #define MICROPY_HW_LED_COUNT        (2)
 #define MICROPY_HW_LED_PULLUP       (0)
 
-#define MICROPY_HW_LED1             (18) // LED1
-#define MICROPY_HW_LED2             (19) // LED2
+#define MICROPY_HW_LED1             {0, 18} // LED1
+#define MICROPY_HW_LED2             {0, 19} // LED2
 
 // UART config
 #define MICROPY_HW_UART1_RX         (pin_A11)

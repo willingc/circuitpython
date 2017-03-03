@@ -49,9 +49,9 @@
 #define MICROPY_HW_LED_TRICOLOR     (1)
 #define MICROPY_HW_LED_PULLUP       (1)
 
-#define MICROPY_HW_LED_RED          (21) // RED
-#define MICROPY_HW_LED_GREEN        (22) // GREEN
-#define MICROPY_HW_LED_BLUE         (23) // BLUE
+#define MICROPY_HW_LED_RED          {0, 21} // RED
+#define MICROPY_HW_LED_GREEN        {0, 22} // GREEN
+#define MICROPY_HW_LED_BLUE         {0, 23} // BLUE
 
 // UART config
 #define MICROPY_HW_UART1_RX         (pin_A11)

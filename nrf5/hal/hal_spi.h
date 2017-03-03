@@ -29,6 +29,7 @@
 
 #include <stdbool.h>
 #include "nrf.h"
+#include "hal/hal_gpio.h"
 
 #if NRF51
   #define SPI_BASE_POINTERS (const uint32_t[]){NRF_SPI0_BASE, NRF_SPI1_BASE}
@@ -99,9 +100,9 @@ typedef enum {
   * @brief  SPI Configuration Structure definition
   */
 typedef struct {
-    const pin_obj_t * mosi_pin;
-    const pin_obj_t * miso_pin;
-    const pin_obj_t * clk_pin;
+    hal_gpio_pin_t mosi_pin;
+    hal_gpio_pin_t miso_pin;
+    hal_gpio_pin_t clk_pin;
     hal_spi_firstbit_t firstbit;
     hal_spi_mode_t mode;
     uint32_t irq_priority;

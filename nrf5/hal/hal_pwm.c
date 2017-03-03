@@ -57,7 +57,7 @@ void hal_pwm_init(NRF_PWM_Type * p_instance, hal_pwm_init_t const * p_pwm_init) 
     g_pwm_seq[2] = 0;
     g_pwm_seq[3] = 0;
 
-    p_instance->PSEL.OUT[0] = (p_pwm_init->pwm_pin << PWM_PSEL_OUT_PIN_Pos)
+    p_instance->PSEL.OUT[0] = (p_pwm_init->pwm_pin.pin << PWM_PSEL_OUT_PIN_Pos)
     		                | (PWM_PSEL_OUT_CONNECT_Connected << PWM_PSEL_OUT_CONNECT_Pos);
 
     p_instance->ENABLE      = (PWM_ENABLE_ENABLE_Enabled << PWM_ENABLE_ENABLE_Pos);

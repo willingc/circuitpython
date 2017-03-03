@@ -82,8 +82,8 @@ typedef enum {
   */
 typedef struct {
     uint8_t             id;           /* TWI instance id */
-    const pin_obj_t *   scl_pin;      /* TWI SCL pin */
-    const pin_obj_t *   sda_pin;      /* TWI SDA pin */
+    hal_gpio_pin_t      scl_pin;      /* TWI SCL pin */
+    hal_gpio_pin_t      sda_pin;      /* TWI SDA pin */
     hal_twi_role_t      role;         /* TWI master/slave */
     hal_twi_clk_freq_t  freq;         /* TWI frequency */
 } hal_twi_init_t;

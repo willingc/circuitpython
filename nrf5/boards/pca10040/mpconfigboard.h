@@ -59,10 +59,10 @@
 
 #define MICROPY_HW_LED_PULLUP       (1)
 
-#define MICROPY_HW_LED1             (17) // LED1
-#define MICROPY_HW_LED2             (18) // LED2
-#define MICROPY_HW_LED3             (19) // LED3
-#define MICROPY_HW_LED4             (20) // LED4
+#define MICROPY_HW_LED1             {0, 17} // LED1
+#define MICROPY_HW_LED2             {0, 18} // LED2
+#define MICROPY_HW_LED3             {0, 19} // LED3
+#define MICROPY_HW_LED4             {0, 20} // LED4
 
 // UART config
 #define MICROPY_HW_UART1_RX         (pin_A8)

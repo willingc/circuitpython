@@ -84,32 +84,32 @@ STATIC void epaper_sld00200_print(const mp_print_t *print, mp_obj_t o, mp_print_
     epaper_sld00200p_obj_t *self = o;
 
     mp_printf(print, "SLD00200(SPI(mosi=(port=%u, pin=%u), miso=(port=%u, pin=%u), clk=(port=%u, pin=%u)),\n",
-                     self->spi->pyb->spi->init.mosi_pin->port,
-                     self->spi->pyb->spi->init.mosi_pin->pin,
-                     self->spi->pyb->spi->init.miso_pin->port,
-                     self->spi->pyb->spi->init.miso_pin->pin,
-                     self->spi->pyb->spi->init.clk_pin->port,
-                     self->spi->pyb->spi->init.clk_pin->pin);
+                     self->spi->pyb->spi->init.mosi_pin.port,
+                     self->spi->pyb->spi->init.mosi_pin.pin,
+                     self->spi->pyb->spi->init.miso_pin.port,
+                     self->spi->pyb->spi->init.miso_pin.pin,
+                     self->spi->pyb->spi->init.clk_pin.port,
+                     self->spi->pyb->spi->init.clk_pin);
 
     mp_printf(print, "        PWM(pwm_pin=%u),\n",
                      self->pwm->pyb->pwm->init.pwm_pin);
 
     mp_printf(print, "        cs=(port=%u, pin=%u), panel_on=(port=%u, pin=%u),\n",
-                     self->pin_cs->port,
-                     self->pin_cs->pin,
-                     self->pin_panel_on->port,
+                     self->pin_cs->pin.port,
+                     self->pin_cs->pin.pin,
+                     self->pin_panel_on->pin.port,
                      self->pin_panel_on->pin);
 
     mp_printf(print, "        border=(port=%u, pin=%u), busy=(port=%u, pin=%u),\n",
-                     self->pin_border->port,
-                     self->pin_border->pin,
-                     self->pin_busy->port,
+                     self->pin_border->pin.port,
+                     self->pin_border->pin.pin,
+                     self->pin_busy->pin.port,
                      self->pin_busy->pin);
 
     mp_printf(print, "        reset=(port=%u, pin=%u), discharge=(port=%u, pin=%u),\n",
-                     self->pin_reset->port,
-                     self->pin_reset->pin,
-                     self->pin_discharge->port,
+                     self->pin_reset->pin.port,
+                     self->pin_reset->pin.pin,
+                     self->pin_discharge->pin.port,
                      self->pin_discharge->pin);
 
     mp_printf(print, "        FB(width=%u, height=%u, dir=%u, fb_stride=%u, fb_dirty_stride=%u))\n",

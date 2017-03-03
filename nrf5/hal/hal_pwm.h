@@ -31,6 +31,8 @@
 
 #include "nrf.h"
 
+#include "hal/hal_gpio.h"
+
 // TODO: nrf51 series need Soft PWM. Not part of HAL.
 
 #if NRF52
@@ -66,7 +68,7 @@ typedef enum {
 } hal_pwm_freq_t;
 
 typedef struct {
-    uint8_t pwm_pin;
+    hal_gpio_pin_t pwm_pin;
     hal_pwm_freq_t freq;
     uint8_t duty;
     uint16_t period;

@@ -272,13 +272,13 @@ STATIC mp_obj_t machine_hard_spi_make_new(mp_arg_val_t *args) {
         && args[ARG_NEW_mosi].u_obj != MP_OBJ_NULL
         && args[ARG_NEW_miso].u_obj != MP_OBJ_NULL) {
 
-        self->pyb->spi->init.clk_pin = args[ARG_NEW_sck].u_obj;
-        self->pyb->spi->init.mosi_pin = args[ARG_NEW_mosi].u_obj;
-        self->pyb->spi->init.miso_pin = args[ARG_NEW_miso].u_obj;
+        self->pyb->spi->init.clk_pin = ((pin_obj_t *) args[ARG_NEW_sck].u_obj)->pin;
+        self->pyb->spi->init.mosi_pin = ((pin_obj_t *) args[ARG_NEW_mosi].u_obj)->pin;
+        self->pyb->spi->init.miso_pin = ((pin_obj_t *) args[ARG_NEW_miso].u_obj)->pin;
     } else {
-        self->pyb->spi->init.clk_pin = &MICROPY_HW_SPI0_SCK;
-        self->pyb->spi->init.mosi_pin = &MICROPY_HW_SPI0_MOSI;
-        self->pyb->spi->init.miso_pin = &MICROPY_HW_SPI0_MISO;
+        self->pyb->spi->init.clk_pin = MICROPY_HW_SPI0_SCK.pin;
+        self->pyb->spi->init.mosi_pin = MICROPY_HW_SPI0_MOSI.pin;
+        self->pyb->spi->init.miso_pin = MICROPY_HW_SPI0_MISO.pin;
     }
 
     int baudrate = args[ARG_NEW_baudrate].u_int;

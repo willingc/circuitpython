@@ -21,8 +21,7 @@
 { \
     { &pin_type }, \
     .name = MP_QSTR_ ## p_port ## p_pin, \
-    .port = PORT_ ## p_port, \
-    .pin = (p_pin), \
+    .pin = { PORT_ ## p_port, (p_pin)}, \
     .num_af = (sizeof(p_af) / sizeof(pin_af_obj_t)), \
     .pin_mask = (1 << p_pin), \
     .af = p_af, \

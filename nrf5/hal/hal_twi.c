@@ -38,13 +38,13 @@ static const uint32_t hal_twi_frequency_lookup[] = {
 void hal_twi_master_init(NRF_TWI_Type * p_instance, hal_twi_init_t const * p_twi_init) {
 
 #if NRF52840_XXAA
-    p_instance->PSEL.SCL  = p_twi_init->scl_pin->pin;
-    p_instance->PSEL.SDA  = p_twi_init->sda_pin->pin;
-    p_instance->PSEL.SCL |= (p_twi_init->scl_pin->port << TWI_PSEL_SCL_PORT_Pos);
-    p_instance->PSEL.SDA |= (p_twi_init->sda_pin->port << TWI_PSEL_SDA_PORT_Pos);
+    p_instance->PSEL.SCL  = p_twi_init->scl_pin.pin;
+    p_instance->PSEL.SDA  = p_twi_init->sda_pin.pin;
+    p_instance->PSEL.SCL |= (p_twi_init->scl_pin.port << TWI_PSEL_SCL_PORT_Pos);
+    p_instance->PSEL.SDA |= (p_twi_init->sda_pin.port << TWI_PSEL_SDA_PORT_Pos);
 #else
-    p_instance->PSELSCL  = p_twi_init->scl_pin->pin;
-    p_instance->PSELSDA  = p_twi_init->sda_pin->pin;
+    p_instance->PSELSCL  = p_twi_init->scl_pin.pin;
+    p_instance->PSELSDA  = p_twi_init->sda_pin.pin;
 #endif
 
     p_instance->FREQUENCY = hal_twi_frequency_lookup[p_twi_init->freq];
@@ -101,4 +101,3 @@ void hal_twi_slave_init(NRF_TWI_Type * p_instance, hal_twi_init_t const * p_twi_
 }
 
 #endif // HAL_TWI_MODULE_ENABLED
-

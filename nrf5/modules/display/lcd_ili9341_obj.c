@@ -74,18 +74,18 @@ STATIC void lcd_ili9341_print(const mp_print_t *print, mp_obj_t o, mp_print_kind
     lcd_ili9341_obj_t *self = o;
 
     mp_printf(print, "ILI9341(SPI(mosi=(port=%u, pin=%u), miso=(port=%u, pin=%u), clk=(port=%u, pin=%u)),\n",
-                     self->spi->pyb->spi->init.mosi_pin->port,
-                     self->spi->pyb->spi->init.mosi_pin->pin,
-                     self->spi->pyb->spi->init.miso_pin->port,
-                     self->spi->pyb->spi->init.miso_pin->pin,
-                     self->spi->pyb->spi->init.clk_pin->port,
-                     self->spi->pyb->spi->init.clk_pin->pin);
+                     self->spi->pyb->spi->init.mosi_pin.port,
+                     self->spi->pyb->spi->init.mosi_pin.pin,
+                     self->spi->pyb->spi->init.miso_pin.port,
+                     self->spi->pyb->spi->init.miso_pin.pin,
+                     self->spi->pyb->spi->init.clk_pin.port,
+                     self->spi->pyb->spi->init.clk_pin.pin);
 
     mp_printf(print, "        cs=(port=%u, pin=%u), dc=(port=%u, pin=%u),\n",
-                     self->pin_cs->port,
-                     self->pin_cs->pin,
-                     self->pin_dc->port,
-                     self->pin_dc->pin);
+                     self->pin_cs->pin.port,
+                     self->pin_cs->pin.pin,
+                     self->pin_dc->pin.port,
+                     self->pin_dc->pin.pin);
 
     mp_printf(print, "        FB(width=%u, height=%u, dir=%u, fb_stride=%u, fb_dirty_stride=%u))\n",
                      self->framebuffer->screen_width,

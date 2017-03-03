@@ -32,6 +32,8 @@
 
 #include "nrf.h"
 
+#include "hal/hal_gpio.h"
+
 #if NRF51
 
 #define UART_HWCONTROL_NONE                  ((uint32_t)UART_CONFIG_HWFC_Disabled << UART_CONFIG_HWFC_Pos)
@@ -109,10 +111,10 @@ typedef struct
 } UART_HandleTypeDef;
 
 typedef struct {
-    const pin_obj_t * rx_pin;       /**< RX pin. */
-    const pin_obj_t * tx_pin;       /**< TX pin. */
-    const pin_obj_t * rts_pin;      /**< RTS pin, only used if flow control is enabled. */
-    const pin_obj_t * cts_pin;      /**< CTS pin, only used if flow control is enabled. */
+    hal_gpio_pin_t rx_pin;       /**< RX pin. */
+    hal_gpio_pin_t tx_pin;       /**< TX pin. */
+    hal_gpio_pin_t rts_pin;      /**< RTS pin, only used if flow control is enabled. */
+    hal_gpio_pin_t cts_pin;      /**< CTS pin, only used if flow control is enabled. */
     bool              flow_control; /**< Flow control setting, if flow control is used, the system will use low power UART mode, based on CTS signal. */
     bool              use_parity;   /**< Even parity if TRUE, no parity if FALSE. */
     uint32_t          baud_rate;    /**< Baud rate configuration. */

@@ -80,40 +80,40 @@ STATIC void lcd_ssd1289_print(const mp_print_t *print, mp_obj_t o, mp_print_kind
     lcd_ssd1289_obj_t *self = o;
 
     mp_printf(print, "SSD1289(cs=(port=%u, pin=%u), rs=(port=%u, pin=%u),\n",
-                     self->pin_cs->port,
-                     self->pin_cs->pin,
-                     self->pin_rs->port,
-                     self->pin_rs->pin);
+                     self->pin_cs->pin.port,
+                     self->pin_cs->pin.pin,
+                     self->pin_rs->pin.port,
+                     self->pin_rs->pin.pin);
 
     mp_printf(print, "        wr=(port=%u, pin=%u), reset=(port=%u, pin=%u),\n",
-                     self->pin_wr->port,
-                     self->pin_wr->pin,
-                     self->pin_reset->port,
-                     self->pin_reset->pin);
+                     self->pin_wr->pin.port,
+                     self->pin_wr->pin.pin,
+                     self->pin_reset->pin.port,
+                     self->pin_reset->pin.pin);
 
     mp_printf(print, "        d0=(port=%u, pin=%u), d1=(port=%u, pin=%u),\n",
-                     self->pin_d0->port,
-                     self->pin_d0->pin,
-                     self->pin_d1->port,
-                     self->pin_d1->pin);
+                     self->pin_d0->pin.port,
+                     self->pin_d0->pin.pin,
+                     self->pin_d1->pin.port,
+                     self->pin_d1->pin.pin);
 
     mp_printf(print, "        d2=(port=%u, pin=%u), d3=(port=%u, pin=%u),\n",
-                     self->pin_d2->port,
-                     self->pin_d2->pin,
-                     self->pin_d3->port,
-                     self->pin_d3->pin);
+                     self->pin_d2->pin.port,
+                     self->pin_d2->pin.pin,
+                     self->pin_d3->pin.port,
+                     self->pin_d3->pin.pin);
 
     mp_printf(print, "        d4=(port=%u, pin=%u), d5=(port=%u, pin=%u),\n",
-                     self->pin_d4->port,
-                     self->pin_d4->pin,
-                     self->pin_d5->port,
-                     self->pin_d5->pin);
+                     self->pin_d4->pin.port,
+                     self->pin_d4->pin.pin,
+                     self->pin_d5->pin.port,
+                     self->pin_d5->pin.pin);
 
     mp_printf(print, "        d6=(port=%u, pin=%u), d7=(port=%u, pin=%u),\n",
-                     self->pin_d6->port,
-                     self->pin_d6->pin,
-                     self->pin_d7->port,
-                     self->pin_d7->pin);
+                     self->pin_d6->pin.port,
+                     self->pin_d6->pin.pin,
+                     self->pin_d7->pin.port,
+                     self->pin_d7->pin.pin);
 
 
     mp_printf(print, "        FB(width=%u, height=%u, dir=%u, fb_stride=%u, fb_dirty_stride=%u))\n",

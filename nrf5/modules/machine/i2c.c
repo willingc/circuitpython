@@ -74,10 +74,10 @@ STATIC void machine_hard_i2c_print(const mp_print_t *print, mp_obj_t o, mp_print
     machine_hard_i2c_obj_t *self = o;
     mp_printf(print, "I2C(%u, scl=(port=%u, pin=%u), sda=(port=%u, pin=%u))",
               self->i2c->init.id,
-              self->i2c->init.scl_pin->port,
-              self->i2c->init.scl_pin->pin,
-              self->i2c->init.sda_pin->port,
-              self->i2c->init.sda_pin->pin);
+              self->i2c->init.scl_pin.port,
+              self->i2c->init.scl_pin.pin,
+              self->i2c->init.sda_pin.port,
+              self->i2c->init.sda_pin.pin);
 }
 
 /******************************************************************************/
@@ -108,14 +108,14 @@ mp_obj_t machine_hard_i2c_make_new(const mp_obj_type_t *type, size_t n_args, siz
     const machine_hard_i2c_obj_t *self = &machine_hard_i2c_obj[i2c_id];
 
     if (args[ARG_NEW_scl].u_obj != MP_OBJ_NULL) {
-        self->i2c->init.scl_pin = args[ARG_NEW_scl].u_obj;
+        self->i2c->init.scl_pin = ((pin_obj_t*) args[ARG_NEW_scl].u_obj)->pin;
     } else {
         nlr_raise(mp_obj_new_exception_msg_varg(&mp_type_ValueError,
                   "I2C SCL Pin not set"));
     }
 
     if (args[ARG_NEW_sda].u_obj != MP_OBJ_NULL) {
-        self->i2c->init.sda_pin = args[ARG_NEW_sda].u_obj;
+        self->i2c->init.sda_pin = ((pin_obj_t*) args[ARG_NEW_sda].u_obj)->pin;
     } else {
         nlr_raise(mp_obj_new_exception_msg_varg(&mp_type_ValueError,
                   "I2C SDA Pin not set"));

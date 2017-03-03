@@ -217,12 +217,12 @@ STATIC mp_obj_t pyb_uart_init_helper(pyb_uart_obj_t *self, mp_uint_t n_args, con
         .irq_priority = 6
 #endif
     };
-    uart_init.rx_pin = &MICROPY_HW_UART1_RX;
-    uart_init.tx_pin = &MICROPY_HW_UART1_TX;
+    uart_init.rx_pin = MICROPY_HW_UART1_RX.pin;
+    uart_init.tx_pin = MICROPY_HW_UART1_TX.pin;
 
 #if MICROPY_HW_UART1_HWFC
-    uart_init.rts_pin = &MICROPY_HW_UART1_RTS;
-    uart_init.cts_pin = &MICROPY_HW_UART1_CTS;
+    uart_init.rts_pin = MICROPY_HW_UART1_RTS.pin;
+    uart_init.cts_pin = MICROPY_HW_UART1_CTS.pin;
 #endif
 
     nrf_uart_init(&uart_init);
@@ -321,7 +321,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_2(pyb_uart_writechar_obj, pyb_uart_writechar);
 /// Return value: The character read, as an integer.  Returns -1 on timeout.
 STATIC mp_obj_t pyb_uart_readchar(mp_obj_t self_in) {
     pyb_uart_obj_t *self = self_in;
-    
+
     if (uart_rx_wait(self, self->timeout)) {
         return MP_OBJ_NEW_SMALL_INT(uart_rx_char(self));
     } else {
@@ -444,4 +444,3 @@ const mp_obj_type_t pyb_uart_type = {
     .protocol = &uart_stream_p,
     .locals_dict = (mp_obj_t)&pyb_uart_locals_dict,
 };
-
