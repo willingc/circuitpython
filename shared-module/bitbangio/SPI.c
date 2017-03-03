@@ -133,9 +133,6 @@ bool shared_module_bitbangio_spi_write(bitbangio_spi_obj_t *self, const uint8_t 
                 common_hal_nativeio_digitalinout_set_value(&self->clock, 1 - self->polarity);
                 common_hal_nativeio_digitalinout_set_value(&self->clock, self->polarity);
             }
-            if (dest != NULL) {
-                dest[i] = data_in;
-            }
         }
         return true;
     }
@@ -189,7 +186,7 @@ bool shared_module_bitbangio_spi_read(bitbangio_spi_obj_t *self, uint8_t *data, 
         }
         for (size_t i = 0; i < len; ++i) {
             uint8_t data_in = 0;
-            for (int j = 0; j < 8; ++j, data_out <<= 1) {
+            for (int j = 0; j < 8; ++j) {
                 common_hal_nativeio_digitalinout_set_value(&self->clock, 1 - self->polarity);
                 data_in = (data_in << 1) | common_hal_nativeio_digitalinout_get_value(&self->miso);
                 common_hal_nativeio_digitalinout_set_value(&self->clock, self->polarity);
