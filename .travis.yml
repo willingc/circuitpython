@@ -39,6 +39,7 @@ script:
   - make -C atmel-samd BOARD=cplay_m0_flash
   - make -C atmel-samd BOARD=trinket_m0
   - make -C atmel-samd BOARD=gemma_m0
+  - make -C nrf5 BOARD=pca10040
   - make -C minimal CROSS=1 build/firmware.bin
   - ls -l minimal/build/firmware.bin
   - tools/check_code_size.sh
