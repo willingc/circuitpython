@@ -206,11 +206,15 @@
 
 // if sdk is in use, import configuration
 #if BLUETOOTH_SD
-#include "nrf5_sdk_conf.h"
+#include "bluetooth_conf.h"
 #endif
 
 #ifndef MICROPY_PY_UBLUEPY
 #define MICROPY_PY_UBLUEPY                       (0)
+#endif
+
+#ifndef MICROPY_PY_BLE_NUS
+#define MICROPY_PY_BLE_NUS                       (0)
 #endif
 
 // type definitions for the specific machine

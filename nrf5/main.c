@@ -48,6 +48,7 @@
 #include "pin.h"
 #include "spi.h"
 #include "i2c.h"
+#include "rtc.h"
 #if MICROPY_PY_MACHINE_PWM
 #include "pwm.h"
 #endif
@@ -98,6 +99,8 @@ int main(int argc, char **argv) {
     mp_obj_list_append(mp_sys_path, MP_OBJ_NEW_QSTR(MP_QSTR_)); // current dir (or base dir of the script)
     mp_obj_list_init(mp_sys_argv, 0);
 
+    pyb_set_repl_info(MP_OBJ_NEW_SMALL_INT(0));
+
     readline_init0();
 
     pin_init0();
@@ -112,6 +115,10 @@ int main(int argc, char **argv) {
 
 #if MICROPY_PY_MACHINE_PWM
     pwm_init0();
+#endif
+
+#if MICROPY_PY_MACHINE_RTC
+    rtc_init0();
 #endif
 
 #if MICROPY_PY_MACHINE_TIMER

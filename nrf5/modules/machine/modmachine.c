@@ -49,7 +49,9 @@
 #if MICROPY_PY_MACHINE_TEMP
 #include "temp.h"
 #endif
-
+#if MICROPY_PY_MACHINE_RTC
+#include "rtc.h"
+#endif
 
 #define PYB_RESET_HARD      (0)
 #define PYB_RESET_WDT       (1)
@@ -146,11 +148,13 @@ STATIC mp_obj_t machine_soft_reset(void) {
 MP_DEFINE_CONST_FUN_OBJ_0(machine_soft_reset_obj, machine_soft_reset);
 
 STATIC mp_obj_t machine_sleep(void) {
+    __WFE();
     return mp_const_none;
 }
 MP_DEFINE_CONST_FUN_OBJ_0(machine_sleep_obj, machine_sleep);
 
 STATIC mp_obj_t machine_deepsleep(void) {
+    __WFI();
     return mp_const_none;
 }
 MP_DEFINE_CONST_FUN_OBJ_0(machine_deepsleep_obj, machine_deepsleep);
@@ -160,11 +164,34 @@ STATIC mp_obj_t machine_reset_cause(void) {
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(machine_reset_cause_obj, machine_reset_cause);
 
+STATIC mp_obj_t machine_enable_irq(void) {
+#ifndef BLUETOOTH_SD
+    __enable_irq();
+#else
+
+#endif
+    return mp_const_none;
+}
+MP_DEFINE_CONST_FUN_OBJ_0(machine_enable_irq_obj, machine_enable_irq);
+
+// Resets the pyboard in a manner similar to pushing the external RESET button.
+STATIC mp_obj_t machine_disable_irq(void) {
+#ifndef BLUETOOTH_SD
+    __disable_irq();
+#else
+
+#endif
+    return mp_const_none;
+}
+MP_DEFINE_CONST_FUN_OBJ_0(machine_disable_irq_obj, machine_disable_irq);
+
 STATIC const mp_map_elem_t machine_module_globals_table[] = {
     { MP_OBJ_NEW_QSTR(MP_QSTR___name__),            MP_OBJ_NEW_QSTR(MP_QSTR_umachine) },
     { MP_OBJ_NEW_QSTR(MP_QSTR_info),                (mp_obj_t)&machine_info_obj },
     { MP_OBJ_NEW_QSTR(MP_QSTR_reset),               (mp_obj_t)&machine_reset_obj },
     { MP_OBJ_NEW_QSTR(MP_QSTR_soft_reset),          (mp_obj_t)&machine_soft_reset_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_enable_irq),          (mp_obj_t)&machine_enable_irq_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_disable_irq),         (mp_obj_t)&machine_disable_irq_obj },
 #if MICROPY_HW_ENABLE_RNG
     { MP_OBJ_NEW_QSTR(MP_QSTR_rng),                 (mp_obj_t)&pyb_rng_get_obj },
 #endif
@@ -180,6 +207,9 @@ STATIC const mp_map_elem_t machine_module_globals_table[] = {
 #endif
 #if MICROPY_PY_MACHINE_ADC
     { MP_OBJ_NEW_QSTR(MP_QSTR_ADC),                 (mp_obj_t)&machine_adc_type },
+#endif
+#if MICROPY_PY_MACHINE_RTC
+    { MP_OBJ_NEW_QSTR(MP_QSTR_RTC),                 (mp_obj_t)&machine_rtc_type },
 #endif
 #if MICROPY_PY_MACHINE_PWM
     { MP_OBJ_NEW_QSTR(MP_QSTR_PWM),                 (mp_obj_t)&machine_hard_pwm_type },
