@@ -36,8 +36,8 @@ getting started guides, such as on the Adafruit Learning System.
 
     README.md
     shared-bindings/index.rst
-    docs/design_guide
     docs/drivers.rst
+    docs/design_guide
     docs/supported_ports.rst
     docs/common_hal
     MicroPython Libraries <docs/library/index.rst>
