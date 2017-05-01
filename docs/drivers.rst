@@ -1,3 +1,5 @@
+.. _adafruit-drivers:
+
 Adafruit CircuitPython Drivers
 ==============================
 
