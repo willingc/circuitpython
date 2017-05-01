@@ -1,8 +1,8 @@
-Documentation
-=============
+CircuitPython Documentation
+===========================
 
 The latest documentation can be found at
-`http://circuitpython.readthedocs.io/en/latest/`_.
+`https://circuitpython.readthedocs.io/en/latest/`_.
 
 This documentation is generated from the files in the whole source tree,
 `https://github.com/adafruit/circuitpython/tree/master`_.
@@ -13,7 +13,8 @@ Building the documentation locally
 If you're making changes to the documentation, you should build the
 documentation locally so that you can preview your changes.
 
-### Create and activate a virtualenv (optional)
+Create and activate a virtualenv (optional)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You may choose to create a virtualenv which is used like
 a sandbox to keep dependencies from interfering with other projects. In
@@ -28,14 +29,16 @@ To use the virtual environment, you must first activate it:
 If the virtual environment is activated you will see `(my_virtualenv)`
 near the command prompt.
  
-### Install dependencies    
+Install dependencies
+^^^^^^^^^^^^^^^^^^^^
     
 To install dependencies for documentation, change to the `docs` directory
 and enter:
 
     pip install -r docs/requirements-doc.txt
 
-### Build documentation
+Build documentation
+^^^^^^^^^^^^^^^^^^^
 
 To build the docs from the root directory of the repository:
 
@@ -43,16 +46,18 @@ To build the docs from the root directory of the repository:
 
 All the built html files can be found in the `_build/html` directory.
 
-### View documentation interactively
+View documentation interactively
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can start a webserver to view the documentation interactively:
 
     python3 -m http.server
 
 In your browser, you'll find the documentation index page locally at
-`http://127.0.0.1:8000/_build/html/index.html`.
+`http://127.0.0.1:8000/_build/html/index.html`_.
 
-### Deactivate a virtualenv (optional)
+Deactivate a virtualenv (optional)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When done working with the documentation, deactivate the virtualenv by
 entering:

@@ -48,7 +48,7 @@ getting started guides, such as on the Adafruit Learning System.
     supported_ports.rst
     common_hal
     design_guide
-    CircuitPython Documentation <README.md>
+    documentation
     MicroPython Libraries <library/index.rst>
     contributor_guide
     conduct
