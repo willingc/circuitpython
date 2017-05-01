@@ -1,8 +1,8 @@
-Supported Ports
-==============================
+Adafruit Supported Ports
+========================
 
-Adafruit's MicroPython derivative currently has limited support with a focus on
-the Atmel SAMD21 port
+Adafruit's MicroPython derivative currently has limited hardware support with
+a focus on the Atmel SAMD21 port.
 
 .. toctree::
     :maxdepth: 2
