@@ -1,5 +1,5 @@
-Adafruit CircuitPython drivers
-========================================
+Adafruit CircuitPython Drivers
+==============================
 
 These are drivers available in separate GitHub repos. They are designed for use
 with CircuitPython and may or may not work with `MicroPython <https://micropython.org>`_.
@@ -10,24 +10,26 @@ Bundle
 ------
 
 We provide a bundle of all our libraries to ease installation of drivers and
-their dependencies. he bundle is primarily geared to the Adafruit Express line
+their dependencies. The bundle is primarily geared to the Adafruit Express line
 of boards which will feature a relatively large external flash. With Express
-boards, its easy to copy them all onto the filesystem. However, if you don't
-have enough space simply copy things over as they are needed.
+boards, its easy to copy them all the drivers onto the filesystem. However,
+if you don't have enough space, simply copy things over as they are needed.
 
 The bundles are available `on GitHub <https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases>`_.
 
-To install them:
+To install the bundle:
 
-#. `Download <https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases>`_ and unzip the latest zip thats not a source zip.
-#. Copy the ``lib`` folder to the ``CIRCUIPY`` or ``MICROPYTHON``.
+#. `Download <https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases>`_
+   and unzip the latest zip that is not a zip of source files.
+#. Copy the ``lib`` folder to the ``CIRCUITPY`` or ``MICROPYTHON``.
 
 Foundational Libraries
 ----------------------
 
 These libraries provide critical functionality to many of the drivers below. It
 is recommended to always have them installed onto the CircuitPython file system in
-the ``lib/`` directory. Some drivers may not work without them.
+the ``lib`` directory. Some drivers may not work without these foundational
+libraries.
 
 .. toctree::
 
@@ -38,9 +40,10 @@ Drivers
 -------
 
 Drivers provide easy access to sensors and other chips without requiring a
-knowledge of the interface details of the chip itself.
+in-depth knowledge of the chip's interface details.
 
 .. toctree::
+
     RGB Displays <http://micropython-rgb.readthedocs.io/>
     Analog-to-digital converters: ADS1015 and ADS1115 <http://micropython-ads1015.readthedocs.io/>
     DS3231 Real-time Clock (Precision RTC) <https://circuitpython.readthedocs.io/projects/ds3231/en/latest/>
