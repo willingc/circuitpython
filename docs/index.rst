@@ -51,8 +51,8 @@ getting started guides, such as on the Adafruit Learning System.
     CircuitPython Documentation <README.md>
     MicroPython Libraries <library/index.rst>
     contributor_guide
-    CircuitPython Code of Conduct <../CODE_OF_CONDUCT>
-    License <../license.rst>
+    conduct
+    license
 
 
 Indices and tables
