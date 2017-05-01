@@ -1,11 +1,13 @@
-Adafruit's CircuitPython Documentation
-======================================
+Documentation
+=============
 
 The latest documentation can be found at:
-http://circuitpython.readthedocs.io/en/latest/
 
-The documentation you see there is generated from the files in the whole tree:
-https://github.com/adafruit/circuitpython/tree/master
+    http://circuitpython.readthedocs.io/en/latest/
+
+This documentation is generated from the files in the whole source tree:
+
+    https://github.com/adafruit/circuitpython/tree/master
 
 Building the documentation locally
 ----------------------------------
@@ -49,7 +51,7 @@ You can start a webserver to view the documentation interactively:
 
     python3 -m http.server
 
-In your browser, you'll find the documentation index page at
+In your browser, you'll find the documentation index page locally at
 `http://127.0.0.1:8000/_build/html/index.html`.
 
 ### Deactivate a virtualenv (optional)
