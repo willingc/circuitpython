@@ -14,7 +14,7 @@ Bundle
 We provide a bundle of all our libraries to ease installation of drivers and
 their dependencies. The bundle is primarily geared to the Adafruit Express line
 of boards which will feature a relatively large external flash. With Express
-boards, its easy to copy them all the drivers onto the filesystem. However,
+boards, it's easy to copy them all the drivers onto the filesystem. However,
 if you don't have enough space, simply copy things over as they are needed.
 
 The bundles are available `on GitHub <https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases>`_.
