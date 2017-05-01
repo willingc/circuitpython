@@ -1,13 +1,11 @@
 Documentation
 =============
 
-The latest documentation can be found at:
+The latest documentation can be found at
+`http://circuitpython.readthedocs.io/en/latest/`_.
 
-    http://circuitpython.readthedocs.io/en/latest/
-
-This documentation is generated from the files in the whole source tree:
-
-    https://github.com/adafruit/circuitpython/tree/master
+This documentation is generated from the files in the whole source tree,
+`https://github.com/adafruit/circuitpython/tree/master`_.
 
 Building the documentation locally
 ----------------------------------
