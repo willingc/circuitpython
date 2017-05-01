@@ -36,10 +36,12 @@ through the `Adafruit Learning System <https://learn.adafruit.com/>`_.
 This documentation contains low-level API docs that may link out to separate
 getting started guides, such as on the Adafruit Learning System.
 
-.. toctree::
-    :maxdepth: 2
+**Contents**
 
-    **Table of Contents** <self>
+.. toctree::
+    :maxdepth: 3
+
+    Table of Contents <self>
     README.rst
     shared-bindings/index.rst
     docs/drivers.rst
