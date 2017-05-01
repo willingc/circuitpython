@@ -43,16 +43,16 @@ getting started guides, such as on the Adafruit Learning System.
 
     Table of Contents <self>
     README.rst
-    shared-bindings/index.rst
-    docs/drivers.rst
-    docs/supported_ports.rst
-    docs/common_hal
-    docs/design_guide
-    CircuitPython Documentation <docs/README.md>
-    MicroPython Libraries <docs/library/index.rst>
-    docs/contributor_guide
-    CircuitPython Code of Conduct <CODE_OF_CONDUCT>
-    License <license.rst>
+    ../shared-bindings/index.rst
+    drivers.rst
+    supported_ports.rst
+    common_hal
+    design_guide
+    CircuitPython Documentation <README.md>
+    MicroPython Libraries <library/index.rst>
+    contributor_guide
+    CircuitPython Code of Conduct <../CODE_OF_CONDUCT>
+    License <../license.rst>
 
 
 Indices and tables
