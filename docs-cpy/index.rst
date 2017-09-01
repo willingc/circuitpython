@@ -45,14 +45,11 @@ Other supported Adafruit boards include:
 * `Adafruit Feather HUZZAH <https://www.adafruit.com/products/2821>`_,
 * `Adafruit Feather M0 Bluefruit LE <https://www.adafruit.com/products/2995>`_.
 
-Contents
---------
-
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-
+   directories.rst
 
 Indices and tables
 ==================
