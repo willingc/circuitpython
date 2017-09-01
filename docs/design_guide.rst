@@ -161,7 +161,7 @@ After the license comment::
 
     """
     `<module name>` - <Short description>
-    =================================================
+    =====================================
     <Longer description.>
     """
 
