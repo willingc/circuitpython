@@ -309,8 +309,8 @@ For example, if you are writing a driver for an I2C device, then take in an I2C
 object instead of the pins themselves. This allows the calling code to provide
 any object with the appropriate methods such as an I2C expansion board.
 
-Another example is to expect a `DigitalInOut` for a pin to toggle instead of a
-`microcontroller.Pin` from `board`. Taking in the `~microcontroller.Pin` object
+Another example is to expect a ``DigitalInOut`` for a pin to toggle instead of a
+``microcontroller.Pin`` from ``board``. Taking in the ``~microcontroller.Pin`` object
 alone would limit the driver to pins on the actual microcontroller instead of pins
 provided by another driver such as an IO expander.
 
@@ -418,4 +418,4 @@ MicroPython compatibility
 
 Keeping compatibility with MicroPython isn't a high priority for
 CircuitPython. Please keep compatibility when it's not in conflict
- with any of the above goals.
+with any of the above goals.
