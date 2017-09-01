@@ -1,5 +1,5 @@
 Additional Libraries on GitHub
-========================================
+==============================
 
 These are libraries and drivers available in separate GitHub repos. They are
 designed for use with CircuitPython and may or may not work with
@@ -36,11 +36,12 @@ the ``lib/`` directory. Some drivers may not work without them.
     BusDevice Library <https://circuitpython.readthedocs.io/projects/bus_device/en/latest/>
 
 Helper Libraries
--------
+----------------
 
 These libraries build on top of the low level APIs to simplify common tasks.
 
 .. toctree::
+
     USB Human Interface Device (Keyboard and Mouse) <https://circuitpython.readthedocs.io/projects/hid/en/latest/>
 
 Drivers
@@ -50,6 +51,7 @@ Drivers provide easy access to sensors and other chips without requiring a
 knowledge of the interface details of the chip itself.
 
 .. toctree::
+
     NeoPixel <https://circuitpython.readthedocs.io/projects/neopixel/en/latest/>
     SimpleIO <https://circuitpython.readthedocs.io/projects/simpleio/en/latest/>
     RGB Displays <http://micropython-rgb.readthedocs.io/>
