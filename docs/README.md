@@ -1,14 +1,14 @@
-Adafruit's CircuitPython Documentation
-=========================
+# Adafruit's CircuitPython Documentation
 
-The latest documentation can be found at:
-http://circuitpython.readthedocs.io/en/latest/
+The latest CircuitPython API Reference documentation can be found at Read The
+Docs: http://circuitpython.readthedocs.io/en/latest/
 
-The documentation you see there is generated from the files in the whole tree:
+## Source files for documentation
+
+The documentation is generated from the source files in the whole git tree:
 https://github.com/adafruit/circuitpython/tree/master
 
-Building the documentation locally
-----------------------------------
+## Building the documentation locally
 
 If you're making changes to the documentation, you should build the
 documentation locally so that you can preview your changes.
@@ -20,7 +20,7 @@ preferably in a virtualenv:
      pip install recommonmark
      pip install sphinx_rtd_theme
 
-In `circuitpython/`, build the docs:
+In the `circuitpython` root directory, enter this command to build the docs:
 
     sphinx-build -v -b html . _build/html
 
