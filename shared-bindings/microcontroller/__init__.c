@@ -43,7 +43,7 @@
 #include "py/runtime.h"
 
 //| :mod:`microcontroller` --- Pin references and cpu functionality
-//| ================================================================
+//| ===============================================================
 //|
 //| .. module:: microcontroller
 //|   :synopsis: Pin references and core functionality
