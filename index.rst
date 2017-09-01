@@ -59,12 +59,6 @@ docs are low-level API docs and may link out to separate getting started guides.
 
 .. toctree::
     :maxdepth: 3
-    :caption: Library
-
-    docs/library/index.rst
-
-.. toctree::
-    :maxdepth: 3
     :caption: About the CircuitPython project
 
     README
