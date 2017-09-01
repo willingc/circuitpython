@@ -45,11 +45,12 @@ docs are low-level API docs and may link out to separate getting started guides.
 .. toctree::
     :maxdepth: 3
     :caption: shared bindings
+
     shared-bindings/index.rst
 
 .. toctree::
     :maxdepth: 3
-    :caption: Adafruit content
+    :caption: CircuitPython docs
 
     docs/drivers.rst
     docs/common_hal.md
@@ -58,13 +59,13 @@ docs are low-level API docs and may link out to separate getting started guides.
 
 .. toctree::
     :maxdepth: 3
-    :caption: library
+    :caption: Library
 
     docs/library/index.rst
 
 .. toctree::
     :maxdepth: 3
-    :caption: About the project
+    :caption: About the CircuitPython project
 
     README
     CONTRIBUTING
