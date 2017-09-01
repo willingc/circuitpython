@@ -1,1 +1,4 @@
 # dummy file to work around readthedocs bug: https://github.com/rtfd/readthedocs.org/issues/2855
+sphinx>=1.6
+recommonmark==0.4.0
+sphinx_rtd_theme
