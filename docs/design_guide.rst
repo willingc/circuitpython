@@ -1,19 +1,22 @@
-Design Guide
-============
+CircuitPython Design Guide
+==========================
 
-MicroPython has created a great foundation to build upon and to make it even
-better for beginners we've created CircuitPython. This guide covers a number of
-ways the core and libraries are geared towards beginners.
+MicroPython has created a great open source foundation to build upon.
+We, Adafruit and the community, have improved upon this foundation by
+creating **CircuitPython** to make it even better for beginners to Python
+and electronics. This design guide covers a number of ways the core and
+libraries are designed and devloped with beginners in mind.
 
 Start libraries with the cookiecutter
 -------------------------------------
 
-Cookiecutter is a cool tool that lets you bootstrap a new repo based on another
-repo. We've made one `here <https://github.com/adafruit/cookiecutter-adafruit-circuitpython>`_
-for CircuitPython libraries that include configs for Travis CI and ReadTheDocs
-along with a setup.py, license, code of conduct and readme.
+`Cookiecutter <https://github.com/audreyr/cookiecutter>`_ is a cool tool that
+lets you bootstrap a new repo based on another repo. We've made a `cookiecutter
+for CircuitPython libraries <https://github.com/adafruit/cookiecutter-adafruit-circuitpython>`_
+that include configs for Travis CI and ReadTheDocs along with a ``setup.py``,
+license, code of conduct and readme. To use the cookiecutter:
 
-.. code-block::sh
+.. code-block::bash
 
     # The first time
     pip install cookiecutter
@@ -24,19 +27,20 @@ Module Naming
 -------------
 
 Adafruit funded libraries should be under the
-`adafruit organization <https://github.com/adafruit>`_ and have the format
-``Adafruit_CircuitPython_<name>`` and have a corresponding ``adafruit_<name>``
-directory (aka package) or ``adafruit_<name>.py`` file (aka module).
+`adafruit organization <https://github.com/adafruit>`_ on GitHub
+and have the format ``Adafruit_CircuitPython_<name>`` and have a
+corresponding ``adafruit_<name>`` directory (aka package) or
+``adafruit_<name>.py`` file (aka module).
 
-Community created libraries should have the format ``CircuitPython_<name>`` and
-not have the ``adafruit_`` module or package prefix.
+Community created libraries should have the format ``CircuitPython_<name>``
+and not have the ``adafruit_`` module or package prefix.
 
 Both should have the CircuitPython repository topic on GitHub.
 
 .. _lifetime-and-contextmanagers:
 
 Lifetime and ContextManagers
---------------------------------------------------------------------------------
+----------------------------
 
 A driver should be initialized and ready to use after construction. If the
 device requires deinitialization, then provide it through ``deinit()`` and also
@@ -87,7 +91,7 @@ handle exceptions on their own, deinitializing the hardware using a with
 statement will ensure hardware isn't enabled longer than needed.
 
 Verify your device
---------------------------------------------------------------------------------
+------------------
 
 Whenever possible, make sure device you are talking to is the device you expect.
 If not, raise a ValueError. Beware that I2C addresses can be identical on
@@ -95,7 +99,7 @@ different devices so read registers you know to make sure they match your
 expectation. Validating this upfront will help catch mistakes.
 
 Getters/Setters
---------------------------------------------------------------------------------
+---------------
 
 When designing a driver for a device, use properties for device state and use
 methods for sequences of abstract actions that the device performs. State is a
@@ -235,7 +239,7 @@ Renders as:
 Use BusDevice
 -------------
 
-[BusDevice](https://github.com/adafruit/Adafruit_CircuitPython_BusDevice) is an
+`BusDevice <https://github.com/adafruit/Adafruit_CircuitPython_BusDevice>`_ is an
 awesome foundational library that manages talking on a shared I2C or SPI device
 for you. The devices manage locking which ensures that a transfer is done as a
 single unit despite CircuitPython internals and, in the future, other Python
@@ -299,7 +303,7 @@ a parent class with functionality. This technique is known as composition and
 leads to code that is more flexible and testable than traditional inheritance.
 
 .. seealso:: `Wikipedia <https://en.wikipedia.org/wiki/Dependency_inversion_principle>`_
-  has more information on "dependency inversion".
+             has more information on "dependency inversion".
 
 For example, if you are writing a driver for an I2C device, then take in an I2C
 object instead of the pins themselves. This allows the calling code to provide
@@ -348,7 +352,7 @@ Examples
 ustruct.pack
 ^^^^^^^^^^^^
 
-Use `ustruct.pack_into` instead of `ustruct.pack`.
+Use ``ustruct.pack_into`` instead of ``ustruct.pack``.
 
 Sensor properties and units
 ---------------------------
@@ -412,5 +416,6 @@ mimic the structure in ``shared-bindings``.
 MicroPython compatibility
 -------------------------
 
-Keeping compatibility with MicroPython isn't a high priority. It should be done
-when its not in conflict with any of the above goals.
+Keeping compatibility with MicroPython isn't a high priority for
+CircuitPython. Please keep compatibility when it's not in conflict
+ with any of the above goals.
