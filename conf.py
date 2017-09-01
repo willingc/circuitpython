@@ -151,7 +151,7 @@ pygments_style = 'sphinx'
 # of rst_prolog, so we follow. Absolute paths below mean "from the base
 # of the doctree".
 rst_epilog = """
-.. include:: docs/templates/replace.inc
+.. include:: templates/replace.inc
 """
 
 # -- Options for HTML output ----------------------------------------------
