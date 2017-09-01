@@ -114,7 +114,7 @@ Here is more info on properties from
 `Python <https://docs.python.org/3/library/functions.html#property>`_.
 
 Design for compatibility with CPython
---------------------------------------------------------------------------------
+=====================================
 
 CircuitPython is aimed to be one's first experience with code.  It will be the
 first step into the world of hardware and software. To ease one's exploration
@@ -126,7 +126,7 @@ you increase the likelihood that incorrect expectations are found on import and
 not randomly during runtime.
 
 Example
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~
 
 When adding extra functionality to CircuitPython to mimic what a normal
 operating system would do, either copy an existing CPython API (for example file
@@ -137,7 +137,7 @@ That way when someone moves the code to CPython they know what parts need to be
 adapted.
 
 Document inline
---------------------------------------------------------------------------------
+---------------
 
 Whenever possible, document your code right next to the code that implements it.
 This makes it more likely to stay up to date with the implementation itself. Use
@@ -151,7 +151,7 @@ minimize the space used on disk and on load, distribute the library as both .py
 and .mpy, MicroPython and CircuitPython's bytecode format that omits comments.
 
 Module description
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 After the license comment::
 
@@ -162,7 +162,7 @@ After the license comment::
     """
 
 Class description
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 Documenting what the object does::
 
@@ -177,7 +177,7 @@ Renders as:
   Interface to the DS3231 RTC.
 
 Data descriptor description
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Comment is after even though its weird::
 
@@ -192,7 +192,7 @@ Renders as:
   True if the device has lost power since the time was set.
 
 Method description
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 First line after the method definition::
 
@@ -212,7 +212,7 @@ Renders as:
   :param float degrees: Degrees to turn right
 
 Property description
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 Comment comes from the getter::
 
@@ -233,7 +233,7 @@ Renders as:
   The current date and time
 
 Use BusDevice
---------------------------------------------------------------------------------
+-------------
 
 [BusDevice](https://github.com/adafruit/Adafruit_CircuitPython_BusDevice) is an
 awesome foundational library that manages talking on a shared I2C or SPI device
@@ -244,7 +244,7 @@ manages baudrate settings, chip select line and extra post-transaction clock
 cycles.
 
 I2C Example
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -268,7 +268,7 @@ I2C Example
 
 
 SPI Example
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -291,7 +291,7 @@ SPI Example
           return self.buf[0]
 
 Use composition
---------------------------------------------------------------------------------
+---------------
 
 When writing a driver, take in objects that provide the functionality you need
 rather than taking their arguments and constructing them yourself or subclassing
@@ -311,7 +311,7 @@ alone would limit the driver to pins on the actual microcontroller instead of pi
 provided by another driver such as an IO expander.
 
 Lots of small modules
---------------------------------------------------------------------------------
+---------------------
 
 CircuitPython boards tend to have a small amount of internal flash and a small
 amount of ram but large amounts of external flash for the file system. So, create
@@ -319,13 +319,13 @@ many small libraries that can be loaded as needed instead of one large file that
 does everything.
 
 Speed second
---------------------------------------------------------------------------------
+------------
 
 Speed isn't as important as API clarity and code size. So, prefer simple APIs
 like properties for state even if it sacrifices a bit of speed.
 
 Avoid allocations in drivers
---------------------------------------------------------------------------------
+----------------------------
 
 Although Python doesn't require managing memory, its still a good practice for
 library writers to think about memory allocations. Avoid them in drivers if
@@ -343,15 +343,15 @@ than one allocation per call due to internal logic.
 buffers.
 
 Examples
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~
 
 ustruct.pack
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^
 
 Use `ustruct.pack_into` instead of `ustruct.pack`.
 
 Sensor properties and units
---------------------------------------------------------------------------------
+---------------------------
 
 The `Adafruit Unified Sensor Driver Arduino library <https://learn.adafruit.com/using-the-adafruit-unified-sensor-driver/introduction>`_ has a
 `great list <https://learn.adafruit.com/using-the-adafruit-unified-sensor-driver?view=all#standardised-si-units-for-sensor-data>`_
@@ -392,7 +392,7 @@ properties.
 +-----------------------+-----------------------+-------------------------------------------------------------------------+
 
 Common APIs
---------------------------------------------------------------------------------
+-----------
 
 Outside of sensors, having common methods amongst drivers for similar devices
 such as devices can be really useful. Its early days however. For now, try to
@@ -400,7 +400,7 @@ adhere to guidelines in this document. Once a design is settled on, add it as a
 subsection to this one.
 
 Adding native modules
---------------------------------------------------------------------------------
+---------------------
 
 The Python API for a new module should be defined and documented in
 ``shared-bindings`` and define an underlying C API. If the implementation is
@@ -410,7 +410,7 @@ within the port's folder. In either case, the file and folder structure should
 mimic the structure in ``shared-bindings``.
 
 MicroPython compatibility
---------------------------------------------------------------------------------
+-------------------------
 
 Keeping compatibility with MicroPython isn't a high priority. It should be done
 when its not in conflict with any of the above goals.
