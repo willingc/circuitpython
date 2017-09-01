@@ -33,11 +33,11 @@
 #include "shared-bindings/random/__init__.h"
 
 //| :mod:`random` --- psuedo-random numbers and choices
-//| ========================================================
+//| ===================================================
 //|
 //| .. module:: random
-//|   :synopsis: psuedo-random numbers and choices
-//|   :platform: SAMD21, ESP8266
+//|    :synopsis: psuedo-random numbers and choices
+//|    :platform: SAMD21, ESP8266
 //|
 //| The `random` module is a strict subset of the CPython `cpython:random`
 //| module. So, code written in CircuitPython will work in CPython but not
@@ -79,7 +79,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(random_getrandbits_obj, random_getrandbits);
 //| .. function:: randrange(stop)
 //|               randrange(start, stop, step=1)
 //|
-//|   Returns a randomly selected integer from `range(start, stop, step)`.
+//|    Returns a randomly selected integer from ``range(start, stop, step)``.
 //|
 STATIC mp_obj_t random_randrange(size_t n_args, const mp_obj_t *args) {
     mp_int_t start = 0;
@@ -122,7 +122,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(random_randrange_obj, 1, 3, random_ra
 //| .. function:: randint(a, b)
 //|
 //|   Returns a randomly selected integer between a and b inclusive. Equivalent
-//|   to `randrange(a, b + 1, 1)`
+//|   to ``randrange(a, b + 1, 1)``
 //|
 STATIC mp_obj_t random_randint(mp_obj_t a_in, mp_obj_t b_in) {
     mp_int_t a = mp_obj_get_int(a_in);
