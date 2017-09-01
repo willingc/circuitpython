@@ -48,3 +48,6 @@ _build
 # Generated rst files
 ######################
 genrst/
+
+docs-cp
+docs
