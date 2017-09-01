@@ -33,11 +33,13 @@ drivers that work with it.
 
 The Adafruit Express line of boards are specifically designed for use with
 CircuitPython. This includes:
+
 * `CircuitPlayground Express <https://www.adafruit.com/product/3333>`_,
 * `Feather M0 Express <https://www.adafruit.com/product/3403>`_,
 * `Metro M0 Express <https://www.adafruit.com/product/3505>`_.
 
 Other supported Adafruit boards include:
+
 * `Arduino Zero <https://www.arduino.cc/en/Main/ArduinoBoardZero>`_, 
 * `Adafruit Feather M0 Basic <https://www.adafruit.com/product/2772>`_,
 * `Adafruit Feather HUZZAH <https://www.adafruit.com/products/2821>`_,
