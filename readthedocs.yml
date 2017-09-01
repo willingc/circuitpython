@@ -1,6 +1,6 @@
 name: jupyterhub
 type: sphinx
 conda:
-    file: docs/environment.yml
+    file: docs-cpy/environment.yml
 python:
   version: 3
