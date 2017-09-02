@@ -1,10 +1,10 @@
-.. _adafruit-core-modules:
+.. _circuitpython-core-modules:
 
 Core Modules
 ============
 
-These core modules are intended to be consistent across ports. Currently,
-only the SAMD21 and ESP8266 ports implement these core module. 
+CircuitPython core modules are intended to be consistent across ports.
+Currently, only the SAMD21 and ESP8266 ports implement these core module. 
 
 .. note:: Exceptions for hardware or limited flash
 
