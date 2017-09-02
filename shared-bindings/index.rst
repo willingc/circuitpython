@@ -1,16 +1,21 @@
-Core Modules
-========================================
+.. _adafruit-core-modules:
 
-These core modules are intended on being consistent across ports. Currently
-they are only implemented in the SAMD21 and ESP8266 ports. A module may not exist
-in a port if no underlying hardware support is present or if flash space is
-limited. For example, a microcontroller without analog features will not have
-`analogio`.
+Core Modules
+============
+
+These core modules are intended to be consistent across ports. Currently,
+only the SAMD21 and ESP8266 ports implement these core module. 
+
+.. note:: Exceptions for hardware or limited flash
+
+   If underlying hardware support is missing or if flash space is limited,
+   the port will skip implementing the respective core modules. For example,
+   a microcontroller without analog features will not implement `analogio`.
 
 .. _module-support-matrix:
 
 Support Matrix
----------------
+--------------
 
 =================  =======  ==============  =======
 Module / Port      SAMD21   SAMD21 Express  ESP8266
@@ -36,11 +41,11 @@ Module / Port      SAMD21   SAMD21 Express  ESP8266
 =================  =======  ==============  =======
 
 Modules
----------
+-------
 
 .. toctree::
-    :glob:
-    :maxdepth: 3
+   :glob:
+   :maxdepth: 3
 
-    */__init__
-    help
+   */__init__
+   help
