@@ -1,5 +1,5 @@
 Adafruit's CircuitPython Documentation
-=========================
+======================================
 
 The latest documentation can be found at:
 http://circuitpython.readthedocs.io/en/latest/

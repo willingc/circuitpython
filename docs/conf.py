@@ -23,7 +23,6 @@ from recommonmark.parser import CommonMarkParser
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('.'))
 
-
 # Specify a custom master document based on the port name
 master_doc = 'index'
 
@@ -49,8 +48,11 @@ templates_path = ['templates']
 # The suffix of source filenames.
 source_suffix = ['.rst', '.md', '.c', '.h']
 
-source_parsers = {'.md': CommonMarkParser,
-                  '.c': "c2rst.CStrip", '.h': "c2rst.CStrip"}
+source_parsers = {
+    '.md': CommonMarkParser,
+    '.c': 'c2rst.CStrip',
+    '.h': 'c2rst.CStrip',
+}
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
@@ -60,7 +62,7 @@ source_parsers = {'.md': CommonMarkParser,
 
 # General information about the project.
 project = 'Adafruit CircuitPython'
-copyright = '2014-2017, MicroPython & CircuitPython contributors (https://github.com/adafruit/circuitpython/graphs/contributors)'
+copyright = '2014-2017, MicroPython & `CircuitPython contributors <https://github.com/adafruit/circuitpython/graphs/contributors>`_'
 
 # These are overwritten on ReadTheDocs.
 # The version info for the project you're documenting, acts as replacement for
@@ -83,46 +85,54 @@ version = release = '0.0.0'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ["*/build-*",
-                    ".venv",
-                    "atmel-samd/asf",
-                    "atmel-samd/asf_conf",
-                    "atmel-samd/common-hal",
-                    "atmel-samd/boards",
-                    "atmel-samd/QTouch",
-                    "atmel-samd/*.c",
-                    "atmel-samd/*.h",
-                    "bare-arm",
-                    "cc3200",
-                    "cc3200/FreeRTOS",
-                    "cc3200/hal",
-                    "drivers",
-                    "esp8266",
-                    "examples",
-                    "extmod",
-                    "frozen",
-                    "lib",
-                    "minimal",
-                    "mpy-cross",
-                    "pic16bit",
-                    "py",
-                    "qemu-arm",
-                    "shared-module",
-                    "stmhal",
-                    "stmhal/hal",
-                    "stmhal/cmsis",
-                    "stmhal/usbdev",
-                    "stmhal/usbhost",
-                    "teensy",
-                    "tests",
-                    "tools",
-                    "unix",
-                    "windows",
-                    "zephyr"]
+exclude_patterns = [
+    '*/build-*',
+    '.venv',
+    'atmel-samd/asf',
+    'atmel-samd/asf_conf',
+    'atmel-samd/common-hal',
+    'atmel-samd/boards',
+    'atmel-samd/QTouch',
+    'atmel-samd/*.c',
+    'atmel-samd/*.h',
+    'bare-arm',
+    'cc3200',
+    'cc3200/FreeRTOS',
+    'cc3200/hal',
+    'drivers',
+    'esp8266',
+    'examples',
+    'extmod',
+    'frozen',
+    'lib',
+    'minimal',
+    'mpy-cross',
+    'pic16bit',
+    'py',
+    'qemu-arm',
+    'shared-module',
+    'stmhal',
+    'stmhal/hal',
+    'stmhal/cmsis',
+    'stmhal/usbdev',
+    'stmhal/usbhost',
+    'teensy',
+    'tests',
+    'tools',
+    'unix',
+    'windows',
+    'zephyr',
+    'wipy',
+    'pyboard',
+    'source_micropython_exclude',
+    'sphinx_selective_exclude',
+    'reference',
+
+]
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
-default_role = 'any'
+default_role = 'obj'
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
 #add_function_parentheses = True
@@ -153,19 +163,16 @@ rst_epilog = """
 
 # -- Options for HTML output ----------------------------------------------
 
-# on_rtd is whether we are on readthedocs.org
+# Set on_rtd to whether we are building on readthedocs.org. We get this line of
+# code grabbed from docs.readthedocs.org
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 if not on_rtd:  # only import and set the theme if we're building docs locally
-    try:
-        import sphinx_rtd_theme
-        html_theme = 'sphinx_rtd_theme'
-        html_theme_path = [sphinx_rtd_theme.get_html_theme_path(), '.']
-    except:
-        html_theme = 'default'
-        html_theme_path = ['.']
-else:
-    html_theme_path = ['.']
+    import sphinx_rtd_theme
+    html_theme = 'sphinx_rtd_theme'
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+
+# otherwise, readthedocs.org uses their default theme, so no need to specify it
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -189,12 +196,12 @@ else:
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-html_favicon = 'docs/static/favicon.ico'
+html_favicon = 'static/favicon.ico'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['docs/static']
+html_static_path = ['static']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -245,89 +252,9 @@ html_last_updated_fmt = '%d %b %Y'
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'MicroPythondoc'
 
-
-# -- Options for LaTeX output ---------------------------------------------
-
-latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
-
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
-
-# Additional stuff for the LaTeX preamble.
-#'preamble': '',
-# Include 3 levels of headers in PDF ToC
-'preamble': '\setcounter{tocdepth}{2}',
-}
-
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title,
-#  author, documentclass [howto, manual, or own class]).
-latex_documents = [
-  (master_doc, 'MicroPython.tex', 'MicroPython Documentation',
-   'Damien P. George, Paul Sokolovsky, and contributors', 'manual'),
-]
-
-# The name of an image file (relative to this directory) to place at the top of
-# the title page.
-#latex_logo = None
-
-# For "manual" documents, if this is true, then toplevel headings are parts,
-# not chapters.
-#latex_use_parts = False
-
-# If true, show page references after internal links.
-#latex_show_pagerefs = False
-
-# If true, show URL addresses after external links.
-#latex_show_urls = False
-
-# Documents to append as an appendix to all manuals.
-#latex_appendices = []
-
-# If false, no module index is generated.
-#latex_domain_indices = True
-
-
-# -- Options for manual page output ---------------------------------------
-
-# One entry per manual page. List of tuples
-# (source start file, name, description, authors, manual section).
-man_pages = [
-    ('index', 'micropython', 'MicroPython Documentation',
-     ['Damien P. George, Paul Sokolovsky, and contributors'], 1),
-]
-
-# If true, show URL addresses after external links.
-#man_show_urls = False
-
-
-# -- Options for Texinfo output -------------------------------------------
-
-# Grouping the document tree into Texinfo files. List of tuples
-# (source start file, target name, title, author,
-#  dir menu entry, description, category)
-texinfo_documents = [
-  (master_doc, 'MicroPython', 'MicroPython Documentation',
-   'Damien P. George, Paul Sokolovsky, and contributors', 'MicroPython', 'One line description of project.',
-   'Miscellaneous'),
-]
-
-# Documents to append as an appendix to all manuals.
-#texinfo_appendices = []
-
-# If false, no module index is generated.
-#texinfo_domain_indices = True
-
-# How to display URL addresses: 'footnote', 'no', or 'inline'.
-#texinfo_show_urls = 'footnote'
-
-# If true, do not generate a @detailmenu in the "Top" node's menu.
-#texinfo_no_detailmenu = False
-
-
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {"cpython": ('https://docs.python.org/3/', None),
-                       "bus_device": ('https://circuitpython.readthedocs.io/projects/bus_device/en/latest/', None),
-                       "register": ('https://circuitpython.readthedocs.io/projects/register/en/latest/', None)}
+intersphinx_mapping = {
+    'cpython': ('https://docs.python.org/3/', None),
+    'bus_device': ('https://circuitpython.readthedocs.io/projects/bus_device/en/latest/', None),
+    'register': ('https://circuitpython.readthedocs.io/projects/register/en/latest/', None),
+}

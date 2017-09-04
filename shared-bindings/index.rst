@@ -43,4 +43,4 @@ Modules
     :maxdepth: 3
 
     */__init__
-    help
+    help.rst
