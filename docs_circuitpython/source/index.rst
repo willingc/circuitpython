@@ -91,13 +91,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-
-.. hidden rst to avoid warnings
-
-.. toctree::
-   :hidden:
-
-   genrst/index.rst
-   reference/index.rst
-   pyboard/index.rst
