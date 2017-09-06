@@ -77,4 +77,4 @@ including setting up the serial prompt and downloading new firmware using
 DFU programming:
 `PDF guide <http://micropython.org/resources/Micro-Python-Windows-setup.pdf>`__.
 
-.. include:: hardware/index.rst
+.. .. include:: hardware/index.rst
