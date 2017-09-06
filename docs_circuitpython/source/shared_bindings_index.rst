@@ -1,1 +1,1 @@
-.. include:: ../shared-bindings/index.rst
+.. include:: ../../shared-bindings/index.rst
