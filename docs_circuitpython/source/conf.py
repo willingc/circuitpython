@@ -24,7 +24,7 @@ from recommonmark.parser import CommonMarkParser
 sys.path.insert(0, os.path.abspath('.'))
 
 # Specify a custom master document based on the port name
-master_doc = 'source/index'
+master_doc = 'index'
 
 # -- General configuration ------------------------------------------------
 

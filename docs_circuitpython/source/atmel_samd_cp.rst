@@ -1,4 +1,4 @@
 Atmel SAMD
 ==========
 
-.. include:: ../atmel-samd/README.rst
+.. include:: ../../atmel-samd/README.rst
