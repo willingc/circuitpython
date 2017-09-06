@@ -58,30 +58,32 @@ Full Table of Contents
    :caption: API and Usage
 
    shared-bindings/index.rst
-   docs/supported_ports.rst
-   docs/troubleshooting.rst
-   docs/drivers.rst
+   shared_bindings_index.rst
+   supported_ports.rst
+   troubleshooting.rst
+   drivers.rst
 
 .. toctree::
    :maxdepth: 1
    :caption: Design and porting reference
 
-   docs/design_guide
-   docs/common_hal
+   design_guide.rst
+   common_hal.md
 
 .. toctree::
    :maxdepth: 2
    :caption: MicroPython specific
 
-   docs/library/index.rst
+   library/index.rst
 
 .. toctree::
    :maxdepth: 1
    :caption: About the project
 
-   README
-   CONTRIBUTING
-   CODE_OF_CONDUCT
+   readme.rst
+   contributing.md
+   README_cp_doc.md
+   code_of_conduct.rst
    license.rst
 
 Indices and tables
@@ -90,3 +92,15 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
+.. hidden rst to avoid warnings
+
+.. toctree::
+   :glob:
+   :hidden:
+
+   source_micropython_exclude/*
+   genrst/index.rst
+   reference/index.rst
+   pyboard/index.rst

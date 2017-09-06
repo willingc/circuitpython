@@ -123,11 +123,8 @@ exclude_patterns = [
     'windows',
     'zephyr',
     'wipy',
-    'pyboard',
     'source_micropython_exclude',
     'sphinx_selective_exclude',
-    'reference',
-
 ]
 
 # The reST default role (used for this markup: `text`) to use for all
