@@ -57,7 +57,6 @@ Full Table of Contents
    :maxdepth: 3
    :caption: API and Usage
 
-   shared-bindings/index.rst
    shared_bindings_index.rst
    supported_ports.rst
    troubleshooting.rst
