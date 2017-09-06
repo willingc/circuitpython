@@ -57,16 +57,17 @@ knowledge of the interface details of the chip itself.
 
    NeoPixel <https://circuitpython.readthedocs.io/projects/neopixel/en/latest/>
    SimpleIO <https://circuitpython.readthedocs.io/projects/simpleio/en/latest/>
-   RGB Displays <http://micropython-rgb.readthedocs.io/>
+   RGB Displays <http://micropython-rgb.readthedocs.io/en/latest/>
    SD Card <https://circuitpython.readthedocs.io/projects/sdcard/en/latest/>
-   Analog-to-digital converters: ADS1015 and ADS1115 <http://micropython-ads1015.readthedocs.io/>
+   Analog-to-digital converters: ADS1015 and ADS1115 <http://micropython-ads1015.readthedocs.io/en/latest/>
    DS3231 Real-time Clock (Precision RTC) <https://circuitpython.readthedocs.io/projects/ds3231/en/latest/>
    DS1307 Real-time Clock (5V RTC Breakout) <https://circuitpython.readthedocs.io/projects/ds1307/en/latest/>
    PCF8523 Real-time Clock (Adalogger RTC) <https://circuitpython.readthedocs.io/projects/pcf8523/en/latest/>
-   TCS34725 Color Sensor <http://micropython-tcs34725.readthedocs.io/>
-   TSL2561 Light Sensor <http://micropython-tsl2561.readthedocs.io/>
-   PCA9685 Motor and Servo Controllers <http://micropython-pca9685.readthedocs.io/>
-   HT16K33 LED Matrices and Segment Displays <http://micropython-ht16k33.readthedocs.io/>
-   IS31FL3731 Charlieplexed LED Matrix <http://micropython-is31fl3731.readthedocs.io/>
-   MAX7219 LED Matrix <http://micropython-max7219.readthedocs.io/>
+   TCS34725 Color Sensor <http://micropython-tcs34725.readthedocs.io/en/latest/>
+   TSL2561 Light Sensor <http://micropython-tsl2561.readthedocs.io/en/latest/>
+   PCA9685 Motor and Servo Controllers <http://micropython-pca9685.readthedocs.io/en/latest/>
+   HT16K33 LED Matrices and Segment Displays <http://micropython-ht16k33.readthedocs.io/en/latest/>
+   IS31FL3731 Charlieplexed LED Matrix <http://micropython-is31fl3731.readthedocs.io/en/latest/>
+   MAX7219 LED Matrix <http://micropython-max7219.readthedocs.io/en/latest/>
    DotStar <https://circuitpython.readthedocs.io/projects/dotstar/en/latest/>
+

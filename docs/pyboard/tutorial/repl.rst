@@ -29,7 +29,7 @@ Please consult this guide if you are having problems installing the driver.
 
 You now need to run your terminal program.  You can use HyperTerminal if you
 have it installed, or download the free program PuTTY:
-`putty.exe <http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html>`_.
+`putty.exe <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_.
 Using your serial program you must connect to the COM port that you found in the
 previous step.  With PuTTY, click on "Session" in the left-hand panel, then click
 the "Serial" radio button on the right, then enter you COM port (eg COM4) in the

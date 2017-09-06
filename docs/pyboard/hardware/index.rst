@@ -18,7 +18,7 @@ For the official skin modules:
 Datasheets for the components on the pyboard
 --------------------------------------------
 
-* The microcontroller: `STM32F405RGT6 <http://www.st.com/web/catalog/mmc/FM141/SC1169/SS1577/LN1035/PF252144>`_ (link to manufacturer's site)
+* The microcontroller: `STM32F405RGT6 <http://www.st.com/en/microcontrollers/stm32f405rg.html>`_ (link to manufacturer's site)
 * The accelerometer: `Freescale MMA7660 <http://micropython.org/resources/datasheets/MMA7660FC.pdf>`_ (800kiB PDF)
 * The LDO voltage regulator: `Microchip MCP1802 <http://micropython.org/resources/datasheets/MCP1802-22053C.pdf>`_ (400kiB PDF)
 

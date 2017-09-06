@@ -28,7 +28,7 @@
  #include "autoreload.h"
 
 //| :mod:`samd` --- SAMD implementation settings
-//| =================================================
+//| ============================================
 //|
 //| .. module:: samd
 //|   :synopsis: SAMD implementation settings

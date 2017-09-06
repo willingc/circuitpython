@@ -27,9 +27,6 @@
 #include "genhdr/mpversion.h"
 
 const char *circuitpython_help_text =
-    "Help\r\n"
-    "====\r\n"
-    "\r\n"
     "Welcome to Adafruit CircuitPython " MICROPY_GIT_TAG "!\r\n"
     "\r\n"
     "Please visit learn.adafruit.com/category/circuitpython for project guides.\r\n"
