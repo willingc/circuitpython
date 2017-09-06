@@ -1,9 +1,9 @@
 # Adafruit CircuitPython
 
 [![Build Status](https://travis-ci.org/adafruit/circuitpython.svg?branch=master)](https://travis-ci.org/adafruit/circuitpython)
-[![Doc Status](https://readthedocs.org/projects/circuitpython/badge/?version=latest)](http://circuitpython.readthedocs.io/)
+[![Doc Status](https://readthedocs.org/projects/circuitpython/badge/?version=stable)](http://circuitpython.readthedocs.io/en/stable/)
 [![Gitter](https://badges.gitter.im/adafruit/circuitpython.svg)](https://gitter.im/adafruit/circuitpython?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![Discord](https://img.shields.io/discord/327254708534116352.svg)](https://discord.gg/nBQh6qu)
+[![Discord](https://img.shields.io/discord/327254708534116352.svg)](https://discordapp.com/invite/nBQh6qu)
 
 **[Status](#status)** |
 **[Supported Boards](#supported-boards)** |
@@ -54,7 +54,7 @@ and includes experimental hardware support.
 Guides and videos are available through the [Adafruit Learning System](https://learn.adafruit.com/)
 under the [CircuitPython category](https://learn.adafruit.com/category/circuitpython)
 and [MicroPython category](https://learn.adafruit.com/category/micropython).
-An API reference is also available on [Read the Docs](http://circuitpython.readthedocs.io/en/latest/?).
+An API reference is also available on [Read the Docs](http://circuitpython.readthedocs.io/en/latest/).
 
 ## Contributing
 
@@ -64,7 +64,7 @@ project you are agreeing to the [Code of Conduct][]. Contributors who
 follow the [Code of Conduct][] are welcome to submit pull requests and
 they will be promptly reviewed by project admins. Please join the
 [Gitter chat](https://gitter.im/adafruit/circuitpython) or
-[Discord](https://discord.gg/nBQh6qu) too.
+[Discord](https://discordapp.com/invite/nBQh6qu) too.
 
 ---
 
@@ -178,15 +178,15 @@ variations based on the board.
   [Adafruit Feather M0 Basic][], and [Adafruit Feather M0 Bluefruit LE][].
 * `bare-arm` A bare minimum version of MicroPython for ARM MCUs.
 * `cc3200` Support for boards based [CC3200](http://www.ti.com/product/CC3200)
-  from TI such as the [WiPy 1.0](https://www.pycom.io/solutions/py-boards/wipy1/).
+  from TI such as the [WiPy 1.0 and 2.0](http://pycom.io).
 * `esp8266` Support for boards based on ESP8266 WiFi modules such as the
   [Adafruit Feather HUZZAH][].
 * `minimal` A minimal MicroPython port. Start with this if you want
   to port MicroPython to another microcontroller.
 * `pic16bit` Support for 16-bit PIC microcontrollers.
-* `qemu-arm` Support for ARM emulation through [QEMU](https://qemu.org).
+* `qemu-arm` Support for ARM emulation through [QEMU](https://www.qemu.org).
 * `stmhal` Support for boards based on STM32 microcontrollers including
-  the MicroPython flagship [PyBoard](https://store.micropython.org/store/#/products/PYBv1_1).
+  the MicroPython flagship [PyBoard](https://store.micropython.org/store/).
 * `teensy` Support for the Teensy line of boards such as the
   [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html).
 * `unix` Support for UNIX.
@@ -204,10 +204,10 @@ rest are here to maintain compatibility with the
 [Adafruit Feather M0 Express]: https://www.adafruit.com/product/3403
 [Adafruit Metro M0 Express]: https://www.adafruit.com/product/3505
 [Adafruit Gemma M0]: https://www.adafruit.com/product/3501
-[Adafruit Feather HUZZAH]: https://www.adafruit.com/products/2821
-[Adafruit Feather M0 Basic]: https://www.adafruit.com/products/2772
-[Adafruit Feather M0 Bluefruit LE]: https://www.adafruit.com/products/2995
+[Adafruit Feather HUZZAH]: https://www.adafruit.com/product/2821
+[Adafruit Feather M0 Basic]: https://www.adafruit.com/product/2772
+[Adafruit Feather M0 Bluefruit LE]: https://www.adafruit.com/product/2995
 [Adafruit Feather M0 Adalogger]: https://www.adafruit.com/product/2796
-[Arduino Zero]: https://www.arduino.cc/en/Main/ArduinoBoardZero
+[Arduino Zero]: https://store.arduino.cc/usa/arduino-zero
 [MicroPython]: https://github.com/micropython/micropython
 [Code of Conduct]: https://github.com/adafruit/circuitpython/blob/master/CODE_OF_CONDUCT.md

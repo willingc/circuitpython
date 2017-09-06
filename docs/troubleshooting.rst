@@ -26,7 +26,7 @@ happen on Linux and Mac OSX but its less likely.
 #. Copy the appropriate .uf2 to the xxxBOOT drive.
 #. The on-board NeoPixel will turn blue, indicating the erase has started.
 #. After about 15 seconds, the NexoPixel will start flashing green. If it flashes red, the erase failed.
-#. Double-click again and load the appropriate `CircuitPython .uf2 <https://github.com/adafruit/circuitpython/releases/latest>`_.
+#. Double-click again and load the appropriate `CircuitPython .uf2 <https://github.com/adafruit/circuitpython/releases>`_.
 
 ValueError: Incompatible ``.mpy`` file.
 ---------------------------------------
@@ -40,6 +40,6 @@ CircuitPython versions 1.x and 2.x.
 So, if you just upgraded to CircuitPython 2.x from 1.x you'll need to download a
 newer version of the library that triggered the error on ``import``. They are
 all available in the
-`Adafruit bundle <https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/latest>`_
-and the `Community bundle <https://github.com/adafruit/CircuitPython_Community_Bundle/releases/latest>`_.
+`Adafruit bundle <https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases>`_
+and the `Community bundle <https://github.com/adafruit/CircuitPython_Community_Bundle/releases>`_.
 Make sure to download a version with 2.0.0 or higher in the filename.

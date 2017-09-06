@@ -39,7 +39,7 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
-    'sphinx.ext.coverage'
+    'sphinx.ext.coverage',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -123,8 +123,8 @@ exclude_patterns = [
     'windows',
     'zephyr',
     'wipy',
-    'source_micropython_exclude',
     'sphinx_selective_exclude',
+    'source_micropython_exclude',
 ]
 
 # The reST default role (used for this markup: `text`) to use for all

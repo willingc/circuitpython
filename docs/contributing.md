@@ -7,8 +7,8 @@ so will result in corrective actions such as time out or ban from the project.
 
 ## Developer contact
 [@tannewt](https://github.com/tannewt) is the main developer of CircuitPython
-and is sponsored by [Adafruit Industries LLC](https://adafruit.com). He is
-reachable on [Discord](https://adafru.it/discord) as tannewt and
+and is sponsored by [Adafruit Industries LLC](https://www.adafruit.com). He is
+reachable on [Discord](https://discordapp.com/invite/zxKcPUA) as tannewt and
 [Gitter](gitter.im/adafruit/circuitpython) as tannewt during US West Coast
 working hours. He also checks GitHub issues and the [Adafruit support forum](https://forums.adafruit.com/viewforum.php?f=60).
 

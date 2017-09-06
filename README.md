@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/adafruit/circuitpython.svg?branch=master)](https://travis-ci.org/adafruit/circuitpython)
 [![Doc Status](https://readthedocs.org/projects/circuitpython/badge/?version=latest)](http://circuitpython.readthedocs.io/)
 [![Gitter](https://badges.gitter.im/adafruit/circuitpython.svg)](https://gitter.im/adafruit/circuitpython?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![Discord](https://img.shields.io/discord/327254708534116352.svg)](https://discord.gg/nBQh6qu)
+[![Discord](https://img.shields.io/discord/327254708534116352.svg)](https://discordapp.com/invite/nBQh6q)
 
 **[Status](#status)** |
 **[Supported Boards](#supported-boards)** |
@@ -54,7 +54,7 @@ and includes experimental hardware support.
 Guides and videos are available through the [Adafruit Learning System](https://learn.adafruit.com/)
 under the [CircuitPython category](https://learn.adafruit.com/category/circuitpython)
 and [MicroPython category](https://learn.adafruit.com/category/micropython).
-An API reference is also available on [Read the Docs](http://circuitpython.readthedocs.io/en/latest/?).
+An API reference is also available on [Read the Docs](http://circuitpython.readthedocs.io/en/latest/).
 
 ## Contributing
 
@@ -205,9 +205,9 @@ rest are here to maintain compatibility with the
 [Adafruit Metro M0 Express]: https://www.adafruit.com/product/3505
 [Adafruit Gemma M0]: https://www.adafruit.com/product/3501
 [Adafruit Feather HUZZAH]: https://www.adafruit.com/products/2821
-[Adafruit Feather M0 Basic]: https://www.adafruit.com/products/2772
+[Adafruit Feather M0 Basic]: https://www.adafruit.com/product/2772
 [Adafruit Feather M0 Bluefruit LE]: https://www.adafruit.com/products/2995
 [Adafruit Feather M0 Adalogger]: https://www.adafruit.com/product/2796
-[Arduino Zero]: https://www.arduino.cc/en/Main/ArduinoBoardZero
+[Arduino Zero]: https://store.arduino.cc/usa/arduino-zero
 [MicroPython]: https://github.com/micropython/micropython
 [Code of Conduct]: https://github.com/adafruit/circuitpython/blob/master/CODE_OF_CONDUCT.md

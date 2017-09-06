@@ -39,8 +39,6 @@ Modules
 -------
 
 .. toctree::
-   :glob:
    :maxdepth: 3
 
-   */__init__
-   help.rst
+   help

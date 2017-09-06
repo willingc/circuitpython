@@ -8,4 +8,4 @@ the Atmel SAMD21 port and ESP8266 port.
    :maxdepth: 2
 
    atmel_samd_cp.rst
-   esp8266/index.rst
+   esp8266_cp.rst
