@@ -189,5 +189,6 @@ Port Specific modules
 ---------------------
 
 .. toctree::
+   :maxdepth: 2
 
-   bindings/samd/__init__.c
+   bindings/samd/__init__

@@ -41,4 +41,4 @@ Modules
 .. toctree::
    :maxdepth: 3
 
-   help
+   help.rst

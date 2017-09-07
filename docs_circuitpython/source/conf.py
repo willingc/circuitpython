@@ -50,8 +50,8 @@ source_suffix = ['.rst', '.md', '.c', '.h']
 
 source_parsers = {
     '.md': CommonMarkParser,
-    '.c': 'c2rst.CStrip',
-    '.h': 'c2rst.CStrip',
+    '.c': "c2rst.CStrip",
+    '.h': "c2rst.CStrip",
 }
 
 # The encoding of source files.
@@ -86,50 +86,42 @@ version = release = '2.0.0-rc.2'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 exclude_patterns = [
-    '*/build-*',
-    '.venv',
-    'atmel-samd/asf',
-    'atmel-samd/asf_conf',
-    'atmel-samd/common-hal',
-    'atmel-samd/boards',
-    'atmel-samd/QTouch',
-    'atmel-samd/*.c',
-    'atmel-samd/*.h',
-    'bare-arm',
-    'cc3200',
-    'cc3200/FreeRTOS',
-    'cc3200/hal',
-    'drivers',
-    'esp8266',
-    'examples',
-    'extmod',
-    'frozen',
-    'lib',
-    'minimal',
-    'mpy-cross',
-    'pic16bit',
-    'py',
-    'qemu-arm',
-    'shared-module',
-    'stmhal',
-    'stmhal/hal',
-    'stmhal/cmsis',
-    'stmhal/usbdev',
-    'stmhal/usbhost',
-    'teensy',
-    'tests',
-    'tools',
-    'unix',
-    'windows',
-    'zephyr',
-    'wipy',
-    'sphinx_selective_exclude',
-    'source_micropython_exclude',
+    # '*/build-*',
+    # '.venv',
+    # 'bare-arm',
+    # 'cc3200',
+    # 'cc3200/FreeRTOS',
+    # 'cc3200/hal',
+    # 'drivers',
+    # 'examples',
+    # 'extmod',
+    # 'frozen',
+    # 'genrst',
+    # 'lib',
+    # 'minimal',
+    # 'mpy-cross',
+    # 'pic16bit',
+    # 'py',
+    # 'qemu-arm',
+    # 'shared-module',
+    # 'stmhal',
+    # 'stmhal/hal',
+    # 'stmhal/cmsis',
+    # 'stmhal/usbdev',
+    # 'stmhal/usbhost',
+    # 'teensy',
+    # 'tests',
+    # 'tools',
+    # 'unix',
+    # 'windows',
+    # 'zephyr',
+    # 'wipy',
+    # 'sphinx_selective_exclude',
 ]
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
-default_role = 'obj'
+#default_role = 'any'
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
 #add_function_parentheses = True
