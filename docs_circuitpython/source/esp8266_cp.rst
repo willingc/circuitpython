@@ -1,1 +1,1 @@
-.. include:: ../../esp8266/index.rst
+.. include:: ./esp8266/index.rst
