@@ -55,7 +55,7 @@ and includes experimental hardware support.
 Guides and videos are available through the [Adafruit Learning System](https://learn.adafruit.com/)
 under the [CircuitPython category](https://learn.adafruit.com/category/circuitpython)
 and [MicroPython category](https://learn.adafruit.com/category/micropython).
-An API reference is also available on [Read the Docs](http://circuitpython.readthedocs.io/en/latest/?).
+An API reference is also available on [Read the Docs](http://circuitpython.readthedocs.io/en/latest/).
 
 ## Contributing
 
@@ -181,15 +181,15 @@ variations based on the board.
   [Adafruit Feather M0 Basic][], and [Adafruit Feather M0 Bluefruit LE][].
 * `ports/bare-arm` A bare minimum version of MicroPython for ARM MCUs.
 * `ports/cc3200` Support for boards based [CC3200](http://www.ti.com/product/CC3200)
-  from TI such as the [WiPy 1.0](https://www.pycom.io/solutions/py-boards/wipy1/).
+  from TI such as the [WiPy 1.0](https://docs.pycom.io/chapter/datasheets/development/).
 * `ports/esp8266` Support for boards based on ESP8266 WiFi modules such as the
   [Adafruit Feather HUZZAH][].
 * `ports/minimal` A minimal MicroPython port. Start with this if you want
   to port MicroPython to another microcontroller.
 * `ports/pic16bit` Support for 16-bit PIC microcontrollers.
-* `ports/qemu-arm` Support for ARM emulation through [QEMU](https://qemu.org).
+* `ports/qemu-arm` Support for ARM emulation through [QEMU](https://www.qemu.org).
 * `ports/stm32` Support for boards based on STM32 microcontrollers including
-  the MicroPython flagship [PyBoard](https://store.micropython.org/store/#/products/PYBv1_1).
+  the MicroPython flagship [PyBoard](https://store.micropython.org/store/).
 * `ports/teensy` Support for the Teensy line of boards such as the
   [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html).
 * `ports/unix` Support for UNIX.
@@ -208,10 +208,10 @@ rest are here to maintain compatibility with the
 [Adafruit Metro M0 Express]: https://www.adafruit.com/product/3505
 [Adafruit Gemma M0]: https://www.adafruit.com/product/3501
 [Adafruit Trinket M0]: https://www.adafruit.com/product/3500
-[Adafruit Feather HUZZAH]: https://www.adafruit.com/products/2821
-[Adafruit Feather M0 Basic]: https://www.adafruit.com/products/2772
-[Adafruit Feather M0 Bluefruit LE]: https://www.adafruit.com/products/2995
+[Adafruit Feather HUZZAH]: https://www.adafruit.com/product/2821
+[Adafruit Feather M0 Basic]: https://www.adafruit.com/product/2772
+[Adafruit Feather M0 Bluefruit LE]: https://www.adafruit.com/product/2995
 [Adafruit Feather M0 Adalogger]: https://www.adafruit.com/product/2796
-[Arduino Zero]: https://www.arduino.cc/en/Main/ArduinoBoardZero
+[Arduino Zero]: https://store.arduino.cc/usa/ArduinoBoardZero
 [MicroPython]: https://github.com/micropython/micropython
 [Code of Conduct]: https://github.com/adafruit/circuitpython/blob/master/CODE_OF_CONDUCT.md
