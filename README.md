@@ -1,9 +1,9 @@
 # Adafruit CircuitPython
 
 [![Build Status](https://travis-ci.org/adafruit/circuitpython.svg?branch=master)](https://travis-ci.org/adafruit/circuitpython)
-[![Doc Status](https://readthedocs.org/projects/circuitpython/badge/?version=latest)](http://circuitpython.readthedocs.io/)
+[![Doc Status](https://readthedocs.org/projects/circuitpython/badge/?version=latest)](http://circuitpython.readthedocs.io/en/latest/)
 [![Gitter](https://badges.gitter.im/adafruit/circuitpython.svg)](https://gitter.im/adafruit/circuitpython?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![Discord](https://img.shields.io/discord/327254708534116352.svg)](https://discord.gg/nBQh6qu)
+[![Discord](https://img.shields.io/discord/327254708534116352.svg)](https://discordapp.com/invite/nBQh6qu)
 
 **[Status](#status)** |
 **[Supported Boards](#supported-boards)** |
@@ -65,7 +65,7 @@ project you are agreeing to the [Code of Conduct][]. Contributors who
 follow the [Code of Conduct][] are welcome to submit pull requests and
 they will be promptly reviewed by project admins. Please join the
 [Gitter chat](https://gitter.im/adafruit/circuitpython) or
-[Discord](https://discord.gg/nBQh6qu) too.
+[Discord](https://discordapp.com/invite/nBQh6qu) too.
 
 ---
 
